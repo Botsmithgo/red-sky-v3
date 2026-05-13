@@ -1,0 +1,1891 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Red Sky v3 — A Market Thesis for an Experiential Entertainment Credit Platform</title>
+<meta name="description" content="The market, the technology, the four product directions, and the exit pathways for an experiential entertainment credit platform. A fresh-reader brief on a structurally underserved category and the credit infrastructure layer it needs." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ──────────────────────────────────────────────────────────────────────────
+   RED SKY v2 · 2026-05-13 · Product · Market · Financials
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  --ink: #0B0D10; --ink-2: #0F1318; --panel: #14181D; --panel-2: #1A1F26;
+  --rule: #2A323C; --rule-2: #1F262E;
+  --paper: #F2EBDD; --paper-dim: #D9D2C4;
+  --text: #E8E6E1; --text-2: #B5B3AD; --muted: #8A93A0; --muted-2: #5A626C;
+  --accent: #6E9BD1; --accent-dim: rgba(110,155,209,0.16);
+  --signal-red: #E5484D; --signal-red-dim: rgba(229,72,77,0.16);
+  --signal-amber: #F5A623; --signal-amber-dim: rgba(245,166,35,0.18);
+  --signal-green: #46A758; --signal-green-dim: rgba(70,167,88,0.18);
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --max-w: 1320px; --max-prose: 68ch; --max-read: 76ch;
+  --gutter: clamp(20px, 4vw, 56px);
+  --tone-d1: #6E9BD1; --tone-d2: #E5C46E; --tone-d3: #B49DDB; --tone-d4: #E08157;
+  --tone-d5a: #9CB5A3; --tone-d5b: #C4A37A; --tone-b0: #5A626C;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+body {
+  background: var(--ink); color: var(--text); font-family: var(--sans);
+  font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+::selection { background: var(--paper); color: var(--ink); }
+
+.serif { font-family: var(--serif); font-weight: 400; }
+.mono  { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; }
+h1 { font-size: clamp(40px, 6vw, 76px); }
+h2 { font-size: clamp(28px, 3.6vw, 44px); }
+h3 { font-size: clamp(20px, 2.2vw, 28px); }
+h4 { font-size: 18px; }
+h5 { font-size: 15px; font-family: var(--sans); font-weight: 600; letter-spacing: 0; text-transform: uppercase; color: var(--muted); }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 160ms ease; }
+a:hover { border-bottom-color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+.prose { max-width: var(--max-prose); }
+.prose p { color: var(--text); font-size: 16.5px; line-height: 1.7; margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose p.serif { font-family: var(--serif); font-size: 18px; line-height: 1.7; color: var(--text); }
+.prose strong { color: var(--paper); font-weight: 600; }
+.prose em { color: var(--paper-dim); font-style: italic; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+}
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--muted-2); }
+.cite { font-family: var(--mono); font-size: 10px; color: var(--muted); vertical-align: super; padding: 0 4px; border-left: 1px solid var(--rule); margin-left: 4px; letter-spacing: 0.04em; }
+
+/* MASTHEAD */
+.masthead { border-bottom: 1px solid var(--rule); padding: 22px 0; }
+.masthead .row { display: flex; align-items: center; justify-content: space-between; gap: 24px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.masthead .logo { display: flex; align-items: center; gap: 12px; color: var(--paper); font-family: var(--serif); font-size: 18px; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
+.masthead .logo svg { width: 22px; height: 22px; }
+.masthead .meta { display: flex; gap: 22px; align-items: center; }
+.masthead .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal-amber); box-shadow: 0 0 0 4px rgba(245,166,35,0.18); display: inline-block; }
+.masthead .version { padding: 3px 8px; border: 1px solid var(--rule); border-radius: 3px; color: var(--paper); }
+
+/* STICKY NAV */
+.subnav { position: sticky; top: 0; z-index: 50; background: rgba(11,13,16,0.92); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--rule); transform: translateY(-110%); transition: transform 220ms ease; }
+.subnav.visible { transform: translateY(0); }
+.subnav .wrap { display: flex; align-items: center; gap: 16px; overflow-x: auto; height: 48px; padding-top: 0; padding-bottom: 0; scrollbar-width: none; }
+.subnav .wrap::-webkit-scrollbar { display: none; }
+.subnav a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; border: 0; padding: 14px 0; position: relative; }
+.subnav a.active { color: var(--paper); }
+.subnav a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--paper); }
+.subnav .divider { color: var(--muted-2); }
+
+/* HERO */
+.hero { padding: clamp(56px, 9vw, 128px) 0 clamp(48px, 8vw, 96px); border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
+.hero .grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: end; }
+.hero h1 { color: var(--paper); margin-bottom: 24px; letter-spacing: -0.02em; font-weight: 400; }
+.hero h1 em { font-style: italic; color: var(--signal-amber); font-weight: 400; }
+.hero .lede { font-family: var(--serif); font-size: clamp(18px, 1.5vw, 22px); line-height: 1.6; color: var(--text); max-width: 56ch; }
+.hero .lede::first-letter { font-family: var(--serif); font-size: 3.4em; float: left; line-height: 0.85; padding: 8px 12px 0 0; color: var(--paper); font-weight: 500; }
+.hero .scope { margin-top: 32px; padding: 16px 20px; background: var(--ink-2); border-left: 3px solid var(--signal-amber); font-size: 14px; color: var(--text-2); max-width: 60ch; line-height: 1.6; }
+.hero .scope strong { color: var(--paper); }
+.hero .stats { display: grid; gap: 24px; align-content: end; padding-bottom: 8px; }
+.hero .stat { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--rule-2); }
+.hero .stat:last-child { border-bottom: 0; padding-bottom: 0; }
+.hero .stat .k { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+.hero .stat .v { font-family: var(--mono); font-size: 15px; color: var(--text); }
+.hero .stat .v strong { color: var(--paper); font-weight: 600; }
+
+.hero-findings { margin-top: 64px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); }
+.hero-findings > div { padding: 28px 28px 28px 0; border-right: 1px solid var(--rule-2); }
+.hero-findings > div:last-child { border-right: 0; padding-right: 0; }
+.hero-findings > div + div { padding-left: 28px; }
+.hero-findings .n { font-family: var(--mono); font-size: 11px; color: var(--signal-amber); letter-spacing: 0.14em; }
+.hero-findings .h { font-family: var(--serif); font-size: 20px; line-height: 1.3; color: var(--paper); margin: 10px 0 12px; font-weight: 500; }
+.hero-findings .t { font-size: 14px; line-height: 1.55; color: var(--text-2); }
+
+/* SECTION */
+section[id] { padding: clamp(64px, 9vw, 120px) 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 60px; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 56px; margin-bottom: clamp(36px, 5vw, 64px); align-items: end; }
+.sec-head h2 { color: var(--paper); }
+.sec-head h2 small { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 14px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+.sec-head .blurb { color: var(--text-2); font-size: 15.5px; line-height: 1.65; max-width: 56ch; }
+.sec-head .blurb strong { color: var(--text); }
+
+.callout { padding: 24px 28px; background: var(--ink-2); border: 1px solid var(--rule); border-left: 3px solid var(--accent); margin: 32px 0; }
+.callout.amber { border-left-color: var(--signal-amber); background: rgba(245,166,35,0.06); }
+.callout.red { border-left-color: var(--signal-red); background: rgba(229,72,77,0.06); }
+.callout.green { border-left-color: var(--signal-green); }
+.callout h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; color: var(--accent); }
+.callout.amber h5 { color: var(--signal-amber); }
+.callout.red h5 { color: var(--signal-red); }
+.callout.green h5 { color: var(--signal-green); }
+.callout p { font-size: 14.5px; color: var(--text); line-height: 1.6; }
+.callout p + p { margin-top: 10px; }
+.callout strong { color: var(--paper); }
+
+/* TWO-COL EXPLAINER */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.two-col > div { background: var(--ink); padding: 32px; }
+.two-col .label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.two-col h4 { color: var(--paper); margin-bottom: 14px; font-family: var(--serif); font-size: 22px; font-weight: 500; }
+.two-col p { color: var(--text-2); font-size: 14.5px; line-height: 1.6; margin-bottom: 12px; }
+.two-col p:last-child { margin-bottom: 0; }
+.two-col p strong { color: var(--text); }
+.two-col ul { list-style: none; margin-top: 12px; }
+.two-col ul li { padding: 8px 0; border-bottom: 1px solid var(--rule-2); font-family: var(--mono); font-size: 12.5px; color: var(--text-2); display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+.two-col ul li:last-child { border-bottom: 0; }
+.two-col ul li strong { color: var(--paper); font-weight: 600; }
+
+/* FAILURE TIMELINE */
+.timeline { position: relative; padding: 36px 0 8px; }
+.timeline::before { content: ""; position: absolute; left: 14px; top: 60px; bottom: 60px; width: 1px; background: var(--rule); }
+.tl-row { display: grid; grid-template-columns: 32px 1fr; gap: 24px; padding: 18px 0; align-items: start; }
+.tl-row .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink); background: var(--sev); margin-left: 6px; margin-top: 6px; position: relative; z-index: 2; }
+.tl-row[data-sev="crit"] { --sev: var(--signal-red); }
+.tl-row[data-sev="warn"] { --sev: var(--signal-amber); }
+.tl-row[data-sev="info"] { --sev: var(--muted); }
+.tl-row .body { background: var(--ink-2); border-left: 3px solid var(--sev); padding: 14px 18px; }
+.tl-row .date { font-family: var(--mono); font-size: 11px; color: var(--sev); letter-spacing: 0.08em; }
+.tl-row .name { color: var(--paper); font-family: var(--serif); font-size: 18px; margin: 4px 0 6px; font-weight: 500; }
+.tl-row .what { font-size: 13.5px; color: var(--text-2); line-height: 1.55; }
+
+/* OPERATOR UNIVERSE GRID */
+.universe { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.uv { background: var(--ink); padding: 22px 24px; }
+.uv .n { font-family: var(--mono); font-size: 11px; color: var(--signal-amber); letter-spacing: 0.1em; }
+.uv h4 { color: var(--paper); font-size: 19px; font-weight: 500; margin: 8px 0 10px; }
+.uv .desc { font-size: 13.5px; color: var(--text-2); line-height: 1.55; margin-bottom: 12px; }
+.uv .anchors { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 12px; border-top: 1px solid var(--rule-2); }
+.uv .anchors span { font-family: var(--mono); font-size: 10.5px; padding: 3px 8px; background: var(--ink-2); border: 1px solid var(--rule); color: var(--text); letter-spacing: 0.03em; }
+
+/* MARKET FUNNEL */
+.funnel { background: var(--ink-2); border: 1px solid var(--rule); padding: 32px; }
+.funnel .row { display: grid; grid-template-columns: 1fr 130px 140px; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule-2); }
+.funnel .row:last-child { border-bottom: 0; }
+.funnel .row .lbl { display: flex; align-items: center; gap: 16px; }
+.funnel .row .bar { height: 32px; background: linear-gradient(90deg, var(--shade), transparent); position: relative; min-width: 60px; width: var(--w); border-left: 3px solid var(--shade); }
+.funnel .row .name { color: var(--text); font-size: 14.5px; }
+.funnel .row .name strong { color: var(--paper); font-weight: 600; display: block; margin-bottom: 2px; }
+.funnel .row .name span { font-size: 12.5px; color: var(--muted); }
+.funnel .row .val { font-family: var(--mono); font-size: 14px; color: var(--paper); text-align: right; font-weight: 500; }
+.funnel .row .conf { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; text-align: right; }
+.funnel .row .conf[data-c="rpt"] { color: var(--signal-green); }
+.funnel .row .conf[data-c="tri"] { color: var(--signal-amber); }
+.funnel .row .conf[data-c="con"] { color: var(--signal-red); }
+
+/* COMPETITIVE LANDSCAPE */
+.competition { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.cmp-cat { background: var(--ink); padding: 22px 22px; }
+.cmp-cat h4 { color: var(--paper); font-size: 17px; font-weight: 500; margin-bottom: 6px; font-family: var(--serif); }
+.cmp-cat .who { font-family: var(--mono); font-size: 11px; color: var(--text-2); letter-spacing: 0.04em; margin-bottom: 12px; line-height: 1.5; }
+.cmp-cat .gap { font-size: 13px; color: var(--text); line-height: 1.55; padding-top: 12px; border-top: 1px solid var(--rule-2); }
+.cmp-cat .gap strong { color: var(--signal-amber); }
+
+/* PRODUCT CAPABILITIES */
+.capabilities { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.cap { background: var(--ink); padding: 28px 28px; }
+.cap .num { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+.cap h4 { color: var(--paper); font-size: 21px; font-weight: 500; margin: 8px 0 12px; }
+.cap p { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-bottom: 12px; }
+.cap p:last-child { margin-bottom: 0; }
+.cap p strong { color: var(--text); }
+.cap .depth { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule-2); display: flex; gap: 14px; flex-wrap: wrap; }
+.cap .depth .d { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+.cap .depth .d strong { color: var(--text); margin-right: 4px; }
+
+/* DIRECTION DEEP CARDS */
+.dir-deep-grid { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.dir-deep { background: var(--ink); padding: 36px 32px; border-left: 4px solid var(--tone); }
+.dir-deep[data-code="D1"]  { --tone: var(--tone-d1); }
+.dir-deep[data-code="D2"]  { --tone: var(--tone-d2); }
+.dir-deep[data-code="D3"]  { --tone: var(--tone-d3); }
+.dir-deep[data-code="D4"]  { --tone: var(--tone-d4); }
+.dir-deep[data-code="D5a"] { --tone: var(--tone-d5a); }
+.dir-deep[data-code="D5b"] { --tone: var(--tone-d5b); }
+.dir-deep[data-code="B0"]  { --tone: var(--tone-b0); }
+.dir-deep .head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--rule-2); }
+.dir-deep .code { font-family: var(--mono); font-size: 13px; color: var(--tone); letter-spacing: 0.1em; font-weight: 600; }
+.dir-deep h3 { color: var(--paper); margin: 6px 0 8px; font-size: 30px; font-weight: 500; }
+.dir-deep .tagline { font-family: var(--serif); font-style: italic; font-size: 16.5px; color: var(--text-2); line-height: 1.45; max-width: 50ch; }
+.dir-deep .ceiling-tag { text-align: right; }
+.dir-deep .ceiling-tag .lbl { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.dir-deep .ceiling-tag .v { font-family: var(--mono); font-size: 24px; color: var(--tone); font-weight: 600; margin-top: 4px; }
+.dir-deep .ceiling-tag .span { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 4px; }
+.dir-deep .body { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.dir-deep .narrative { font-size: 14.5px; line-height: 1.65; color: var(--text-2); }
+.dir-deep .narrative h5 { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--text); margin: 18px 0 8px; text-transform: uppercase; }
+.dir-deep .narrative h5:first-child { margin-top: 0; }
+.dir-deep .narrative p { margin-bottom: 10px; }
+.dir-deep .narrative p:last-child { margin-bottom: 0; }
+.dir-deep .narrative strong { color: var(--text); }
+.dir-deep .financials {
+  background: var(--ink-2); padding: 20px 22px; border: 1px solid var(--rule-2);
+}
+.dir-deep .financials h5 { font-family: var(--mono); font-size: 10px; color: var(--tone); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+.dir-deep .financials dl { display: grid; gap: 12px; }
+.dir-deep .financials dt { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.dir-deep .financials dd { font-family: var(--mono); font-size: 13px; color: var(--text); line-height: 1.4; }
+.dir-deep .financials dd strong { color: var(--paper); font-weight: 600; }
+.dir-deep .financials .row { padding-bottom: 12px; border-bottom: 1px solid var(--rule-2); }
+.dir-deep .financials .row:last-child { padding-bottom: 0; border-bottom: 0; }
+.dir-deep .comps {
+  margin-top: 20px; padding: 16px 18px; background: var(--ink); border: 1px solid var(--rule-2);
+  font-family: var(--mono); font-size: 11.5px; color: var(--text-2); line-height: 1.55;
+}
+.dir-deep .comps strong { color: var(--tone); font-weight: 600; display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+
+/* ACTIVE-DIR FILTER BAR */
+.activebar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 14px; border: 1px solid var(--rule); border-radius: 4px; background: var(--panel); font-family: var(--mono); font-size: 12px; margin-bottom: 32px; }
+.activebar .label { color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-size: 10px; }
+.activebar .badge { padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.05); }
+.activebar button.clear { margin-left: auto; color: var(--muted); border: 1px solid var(--rule); padding: 5px 10px; border-radius: 4px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.activebar button.clear:hover { color: var(--paper); border-color: var(--muted); }
+.activebar.empty { display: none; }
+
+/* COMPARISON MATRIX */
+.matrix-wrap { border: 1px solid var(--rule); overflow-x: auto; background: var(--ink); }
+.matrix { width: 100%; min-width: 1080px; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+.matrix th, .matrix td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule-2); }
+.matrix thead th { position: sticky; top: 0; background: var(--panel-2); z-index: 2; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); border-bottom: 1px solid var(--rule); font-weight: 500; white-space: nowrap; }
+.matrix thead th.dir-col { cursor: pointer; color: var(--tone); }
+.matrix thead th.dir-col:hover { background: var(--ink-2); }
+.matrix thead th.dim-col { background: var(--ink-2); color: var(--muted); position: sticky; left: 0; z-index: 3; width: 200px; min-width: 200px; }
+.matrix tbody th { position: sticky; left: 0; background: var(--ink); z-index: 1; color: var(--text); font-weight: 400; font-family: var(--sans); font-size: 13px; text-align: left; min-width: 200px; max-width: 220px; border-right: 1px solid var(--rule-2); }
+.matrix tbody tr:hover th, .matrix tbody tr:hover td { background: var(--ink-2); }
+.matrix td { font-family: var(--mono); color: var(--text); font-size: 12.5px; white-space: normal; min-width: 130px; }
+.matrix td.dir-d1  { --tone: var(--tone-d1); } .matrix td.dir-d2  { --tone: var(--tone-d2); }
+.matrix td.dir-d3  { --tone: var(--tone-d3); } .matrix td.dir-d4  { --tone: var(--tone-d4); }
+.matrix td.dir-d5a { --tone: var(--tone-d5a); } .matrix td.dir-d5b { --tone: var(--tone-d5b); }
+.matrix td.dir-b0  { --tone: var(--tone-b0); }
+.matrix th.dir-col.active, .matrix td.active-col { background: var(--panel); box-shadow: inset 3px 0 0 var(--tone); }
+.matrix td.dimmed { opacity: 0.35; }
+.bar-cell .track { height: 4px; background: var(--rule-2); position: relative; border-radius: 2px; min-width: 80px; margin-top: 6px; }
+.bar-cell .fill { position: absolute; top: 0; bottom: 0; background: var(--tone); border-radius: 2px; }
+.bar-cell .median { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--paper); }
+
+/* OUTCOME CHART */
+.outcome { background: var(--ink-2); border: 1px solid var(--rule); padding: 36px 32px 24px; }
+.outcome .scale-row { display: grid; grid-template-columns: 220px 1fr 120px; gap: 24px; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 14px; border-bottom: 1px solid var(--rule); align-items: center; }
+.outcome .scale-row .axis { position: relative; height: 18px; }
+.outcome .scale-row .axis span { position: absolute; top: 0; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.08em; }
+.outcome .row { display: grid; grid-template-columns: 220px 1fr 120px; gap: 24px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule-2); }
+.outcome .row:last-child { border-bottom: 0; }
+.outcome .row .label { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12.5px; color: var(--text); }
+.outcome .row .label .code { color: var(--tone); font-weight: 600; }
+.outcome .row .label .dot { width: 7px; height: 7px; background: var(--tone); border-radius: 50%; }
+.outcome .row .range { position: relative; height: 30px; display: flex; align-items: center; }
+.outcome .row .bar { position: absolute; left: var(--lo); right: calc(100% - var(--hi)); top: 50%; transform: translateY(-50%); height: 8px; background: var(--tone); opacity: 0.42; border-radius: 4px; }
+.outcome .row .median { position: absolute; left: var(--md); top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; border: 2px solid var(--paper); background: var(--tone); border-radius: 50%; z-index: 2; }
+.outcome .row .lo-label, .outcome .row .hi-label { position: absolute; font-family: var(--mono); font-size: 10.5px; color: var(--muted); top: -2px; }
+.outcome .row .lo-label { left: var(--lo); transform: translateX(-50%); }
+.outcome .row .hi-label { left: var(--hi); transform: translateX(-50%); color: var(--text); }
+.outcome .row .time { font-family: var(--mono); font-size: 12px; color: var(--text-2); text-align: right; }
+.outcome[data-active] .row:not(.active) { opacity: 0.32; }
+.outcome .row[data-code="D1"]  { --tone: var(--tone-d1); } .outcome .row[data-code="D2"]  { --tone: var(--tone-d2); }
+.outcome .row[data-code="D3"]  { --tone: var(--tone-d3); } .outcome .row[data-code="D4"]  { --tone: var(--tone-d4); }
+.outcome .row[data-code="D5a"] { --tone: var(--tone-d5a); } .outcome .row[data-code="D5b"] { --tone: var(--tone-d5b); }
+.outcome .row[data-code="B0"]  { --tone: var(--tone-b0); }
+
+/* PROFILE SIM */
+.sim { display: grid; grid-template-columns: 360px 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.profiles { display: grid; gap: 12px; }
+.profile { text-align: left; cursor: pointer; padding: 20px 22px; background: var(--ink-2); border: 1px solid var(--rule); position: relative; transition: border-color 200ms ease, background 200ms ease; }
+.profile:hover { background: var(--panel-2); border-color: var(--muted-2); }
+.profile.active { background: var(--panel); border-color: var(--accent); }
+.profile.active::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+.profile .letter { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.14em; }
+.profile h4 { color: var(--paper); margin: 6px 0 6px; font-size: 17px; }
+.profile p { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+.profile .winners { margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; }
+.profile .winners span { padding: 3px 8px; background: var(--ink); border: 1px solid var(--rule); color: var(--text); }
+.sim-output { background: var(--ink-2); border: 1px solid var(--rule); padding: 36px 32px; min-height: 360px; }
+.sim-output h4 { color: var(--paper); font-size: 18px; margin-bottom: 16px; }
+.sim-output .ranking { display: grid; gap: 14px; margin-top: 20px; }
+.sim-output .rank-row { display: grid; grid-template-columns: 32px 72px 1fr 80px; gap: 18px; align-items: center; padding: 14px 16px; background: var(--ink); border: 1px solid var(--rule-2); border-left: 3px solid var(--tone); }
+.sim-output .rank-row[data-code="D1"]  { --tone: var(--tone-d1); } .sim-output .rank-row[data-code="D2"]  { --tone: var(--tone-d2); }
+.sim-output .rank-row[data-code="D3"]  { --tone: var(--tone-d3); } .sim-output .rank-row[data-code="D4"]  { --tone: var(--tone-d4); }
+.sim-output .rank-row[data-code="D5a"] { --tone: var(--tone-d5a); } .sim-output .rank-row[data-code="D5b"] { --tone: var(--tone-d5b); }
+.sim-output .rank-row .rk { font-family: var(--mono); font-size: 14px; color: var(--paper); font-weight: 600; }
+.sim-output .rank-row .code { font-family: var(--mono); font-size: 13px; color: var(--tone); font-weight: 600; }
+.sim-output .rank-row .why { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+.sim-output .rank-row .score { font-family: var(--mono); font-size: 12px; color: var(--text); text-align: right; }
+.sim-output .rank-row.lead { background: var(--panel); }
+.sim-output .rank-row.lead .rk { color: var(--signal-green); }
+.sim-output .placeholder { font-family: var(--serif); font-size: 17px; line-height: 1.55; color: var(--muted); max-width: 50ch; font-style: italic; }
+
+/* COMPARABLES */
+.comp-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.comp-filters button { font-family: var(--mono); font-size: 11px; padding: 6px 12px; border: 1px solid var(--rule); color: var(--text-2); letter-spacing: 0.08em; text-transform: uppercase; background: var(--ink); }
+.comp-filters button.active { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.comp-filters button:hover:not(.active) { color: var(--paper); border-color: var(--muted); }
+.comps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.comp { background: var(--ink-2); border: 1px solid var(--rule); padding: 22px 24px; transition: opacity 200ms ease; }
+.comp.dimmed { opacity: 0.22; }
+.comp .header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.comp .name { color: var(--paper); font-family: var(--serif); font-size: 20px; font-weight: 500; }
+.comp .for { font-family: var(--mono); font-size: 10px; padding: 3px 7px; background: var(--tone); color: var(--ink); letter-spacing: 0.06em; font-weight: 600; }
+.comp .for[data-for="D1"]  { background: var(--tone-d1); color: var(--ink); }
+.comp .for[data-for="D2"]  { background: var(--tone-d2); color: var(--ink); }
+.comp .for[data-for="D3"]  { background: var(--tone-d3); color: var(--ink); }
+.comp .for[data-for="D4"]  { background: var(--tone-d4); color: var(--ink); }
+.comp .deal { font-family: var(--mono); font-size: 12.5px; color: var(--text); margin: 6px 0 12px; }
+.comp .deal strong { color: var(--paper); }
+.comp .insight { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+.comp .multi { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule-2); font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.comp .multi strong { color: var(--text); font-weight: 600; }
+
+/* CRITERIA */
+.criteria { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.crit { background: var(--ink); }
+.crit-head { display: grid; grid-template-columns: 56px minmax(0, 1.4fr) minmax(0, 1fr) 60px; gap: 24px; align-items: center; padding: 22px 28px; cursor: pointer; width: 100%; text-align: left; }
+.crit-head:hover { background: var(--ink-2); }
+.crit-head .n { font-family: var(--mono); font-size: 18px; color: var(--paper); font-weight: 500; }
+.crit-head .name { color: var(--text); font-size: 17px; font-weight: 500; }
+.crit-head .name .sub { font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; display: block; }
+.crit-head .favors { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-self: end; }
+.crit-head .fav { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 3px; color: var(--text-2); }
+.crit-head .fav .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.crit-head .chev { color: var(--muted); transition: transform 200ms ease; justify-self: end; }
+.crit.open .crit-head .chev { transform: rotate(180deg); }
+.crit-body { display: none; padding: 0 28px 28px 108px; }
+.crit.open .crit-body { display: block; }
+.crit-body p { color: var(--text-2); font-size: 14px; line-height: 1.6; max-width: 64ch; margin-bottom: 14px; }
+.crit-body p:last-child { margin-bottom: 0; }
+.crit-body p strong { color: var(--text); font-weight: 600; }
+.crit-body .weight { margin-top: 18px; padding: 16px 18px; background: var(--ink-2); border-left: 2px solid var(--accent); font-size: 13.5px; color: var(--text-2); }
+.crit-body .weight strong { color: var(--accent); font-family: var(--mono); font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+
+/* RISKS */
+.risks { display: grid; grid-template-columns: 200px repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.risks .col-head { padding: 16px; background: var(--panel-2); font-family: var(--mono); font-size: 11px; color: var(--text-2); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+.risks .row-head { padding: 16px; background: var(--panel-2); font-family: var(--mono); font-size: 11px; color: var(--text-2); letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; justify-content: flex-end; text-align: right; }
+.risks .cell { padding: 14px; background: var(--ink); display: grid; gap: 10px; align-content: start; min-height: 130px; }
+.risk-card { background: var(--ink-2); border: 1px solid var(--rule-2); border-left: 3px solid var(--sev); padding: 12px 14px; font-size: 12.5px; line-height: 1.45; transition: opacity 200ms ease; }
+.risk-card .name { color: var(--paper); font-weight: 500; margin-bottom: 6px; font-size: 13px; }
+.risk-card .tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+.risk-card .tag { font-family: var(--mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; background: var(--rule); color: var(--text-2); letter-spacing: 0.05em; }
+.risk-card .tag[data-d="D1"]  { color: var(--tone-d1); border: 1px solid currentColor; background: transparent; }
+.risk-card .tag[data-d="D2"]  { color: var(--tone-d2); border: 1px solid currentColor; background: transparent; }
+.risk-card .tag[data-d="D3"]  { color: var(--tone-d3); border: 1px solid currentColor; background: transparent; }
+.risk-card .tag[data-d="D4"]  { color: var(--tone-d4); border: 1px solid currentColor; background: transparent; }
+.risk-card .desc { color: var(--text-2); font-size: 12px; line-height: 1.5; }
+.risk-card[data-sev="cat"] { --sev: var(--signal-red); }
+.risk-card[data-sev="ser"] { --sev: var(--signal-amber); }
+.risk-card[data-sev="mod"] { --sev: var(--muted); }
+.risk-card.dimmed { opacity: 0.22; }
+.risk-card .sev-label { font-family: var(--mono); font-size: 10px; color: var(--sev); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+
+/* VERIFY QUESTIONS */
+.verify { display: grid; gap: 14px; }
+.qbox { background: var(--ink-2); border: 1px solid var(--rule); border-left: 3px solid var(--accent); padding: 22px 26px; }
+.qbox .qhead { display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; }
+.qbox .qid { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; }
+.qbox h4 { color: var(--paper); margin-bottom: 6px; font-size: 17px; line-height: 1.3; }
+.qbox .gates { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; margin-top: 4px; }
+.qbox .gates span { padding: 1px 5px; border: 1px solid currentColor; margin-right: 4px; }
+.qbox .gates span[data-d="D1"] { color: var(--tone-d1); }
+.qbox .gates span[data-d="D2"] { color: var(--tone-d2); }
+.qbox .gates span[data-d="D3"] { color: var(--tone-d3); }
+.qbox .gates span[data-d="D4"] { color: var(--tone-d4); }
+.qbox .qbody { margin-top: 18px; padding-left: 74px; }
+.qbox .qbody p { color: var(--text-2); font-size: 13.5px; line-height: 1.6; margin-bottom: 10px; }
+.qbox .qbody p:last-child { margin-bottom: 0; }
+.qbox .qbody p strong { color: var(--text); font-weight: 600; }
+.qbox .qbody .lbl { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 6px; }
+
+/* SEQUENCE */
+.seq { background: var(--ink-2); border: 1px solid var(--rule); padding: 40px 36px; }
+.seq h3 { color: var(--paper); margin-bottom: 8px; }
+.seq .blurb { color: var(--text-2); font-size: 14.5px; margin-bottom: 28px; max-width: 64ch; line-height: 1.6; }
+.seq ol { list-style: none; counter-reset: s; display: grid; gap: 14px; }
+.seq ol li { display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; padding: 18px 20px; background: var(--ink); border-left: 3px solid var(--accent); }
+.seq ol li::before { counter-increment: s; content: counter(s); font-family: var(--serif); font-size: 28px; color: var(--paper); font-weight: 500; line-height: 1; }
+.seq ol li .what { color: var(--text); font-size: 14.5px; line-height: 1.6; }
+.seq ol li .what strong { color: var(--paper); font-weight: 600; }
+
+/* GLOSSARY */
+.glossary { background: var(--ink-2); border: 1px solid var(--rule); padding: 32px; }
+.glossary dl { display: grid; grid-template-columns: 200px 1fr; gap: 16px 32px; }
+.glossary dt { font-family: var(--mono); font-size: 12px; color: var(--paper); font-weight: 600; letter-spacing: 0.04em; padding-top: 2px; }
+.glossary dd { font-size: 13.5px; color: var(--text-2); line-height: 1.55; padding-bottom: 16px; border-bottom: 1px solid var(--rule-2); }
+.glossary dd:last-child { border-bottom: 0; padding-bottom: 0; }
+
+/* FOOTER */
+footer { padding: 64px 0 80px; }
+footer .row { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+footer .col h4 { color: var(--paper); font-family: var(--serif); font-size: 22px; font-weight: 500; }
+footer .col p { color: var(--text-2); font-size: 13px; margin-top: 6px; max-width: 58ch; line-height: 1.55; }
+footer .col.meta { text-align: right; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+footer .col.meta .src { color: var(--text); }
+footer .disclaimer { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--rule); font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--text-2); max-width: 64ch; line-height: 1.55; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .hero .grid, .sec-head, .two-col, .competition, .universe, .capabilities { grid-template-columns: 1fr !important; gap: 32px; }
+  .hero-findings { grid-template-columns: 1fr; }
+  .hero-findings > div { padding: 24px 0 !important; border-right: 0; border-bottom: 1px solid var(--rule-2); }
+  .hero-findings > div:last-child { border-bottom: 0; }
+  .dir-deep .body { grid-template-columns: 1fr; }
+  .dir-deep .head { grid-template-columns: 1fr; }
+  .dir-deep .ceiling-tag { text-align: left; }
+  .comps { grid-template-columns: repeat(2, 1fr); }
+  .sim { grid-template-columns: 1fr; }
+  .risks { grid-template-columns: 140px repeat(3, 1fr); }
+  .crit-head { grid-template-columns: 40px 1fr; gap: 14px; padding: 20px; }
+  .crit-head .favors, .crit-head .chev { display: none; }
+  .crit-body { padding: 0 20px 20px 64px; }
+  .outcome .row, .outcome .scale-row { grid-template-columns: 140px 1fr 80px; gap: 14px; }
+  .glossary dl { grid-template-columns: 1fr; gap: 4px 0; }
+  footer .row { grid-template-columns: 1fr; }
+  footer .col.meta { text-align: left; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 56px 0 48px; }
+  .comps { grid-template-columns: 1fr; }
+  .risks { grid-template-columns: 1fr; }
+  .risks .col-head { display: none; }
+  .risks .row-head { justify-content: flex-start; text-align: left; padding: 18px 16px 6px; background: var(--ink); }
+  .matrix { min-width: 720px; }
+  .outcome .row, .outcome .scale-row { grid-template-columns: 110px 1fr 70px; gap: 10px; }
+  .seq ol li { grid-template-columns: 40px 1fr; gap: 14px; padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap row">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 21 L12 3 L21 21 Z" stroke="#F2EBDD" stroke-width="1.6"/>
+        <path d="M8 16 L16 16" stroke="#E5484D" stroke-width="2"/>
+        <circle cx="12" cy="11" r="1.6" fill="#F5A623"/>
+      </svg>
+      <span>Red Sky</span>
+      <span class="version">v3</span>
+    </div>
+    <div class="meta">
+      <span><span class="dot"></span> Market thesis</span>
+      <span class="hide-sm">Experiential credit platform</span>
+      <span>2026-05-13</span>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="subnav" id="subnav" aria-label="Section navigation">
+  <div class="wrap">
+    <a href="#thesis">Thesis</a><span class="divider">·</span>
+    <a href="#problem">The problem</a><span class="divider">·</span>
+    <a href="#universe">Operator universe</a><span class="divider">·</span>
+    <a href="#market">Market</a><span class="divider">·</span>
+    <a href="#product">The product</a><span class="divider">·</span>
+    <a href="#directions">Four directions</a><span class="divider">·</span>
+    <a href="#matrix">Matrix</a><span class="divider">·</span>
+    <a href="#ceilings">Ceilings</a><span class="divider">·</span>
+    <a href="#framework">Framework</a><span class="divider">·</span>
+    <a href="#simulator">Profile sim</a><span class="divider">·</span>
+    <a href="#comparables">Comparables</a><span class="divider">·</span>
+    <a href="#exits">Exit paths</a><span class="divider">·</span>
+    <a href="#risks">Risks</a><span class="divider">·</span>
+    <a href="#verify">Verify next</a><span class="divider">·</span>
+    <a href="#glossary">Glossary</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="thesis" class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="eyebrow">Market thesis · An experiential entertainment credit platform</div>
+        <h1 style="margin-top:18px">A category in search of its <em>credit infrastructure.</em></h1>
+        <p class="lede">Experiential entertainment — immersive venues, location-based entertainment, themed attractions, eatertainment, touring shows, experiential hospitality, ticketed culture — has institutionalized in the last 36 months. The unit-economic shape of the category is high upfront capital, multi-month revenue ramp, format-driven success, and operator-execution-dependent outcomes. The capital stack that serves this category has not kept pace. <em>This page is the thesis on what to build, why, and how it pays back.</em></p>
+        <div class="scope"><strong>Scope.</strong> Market, technology, and product directions for an experiential entertainment credit platform. The four directions below are not mutually exclusive — they are different products built on the same structural insight, each with its own customer, revenue model, capital intensity, defensibility, and exit pathway. The page is for a fresh reader who wants to understand the category and the choice, not for a team already deep in the material.</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="k">Category</span><span class="v">Experiential entertainment · <strong>institutional &amp; growing</strong></span></div>
+        <div class="stat"><span class="k">Operator tier in focus</span><span class="v">$500K–$10M facilities</span></div>
+        <div class="stat"><span class="k">Serviceable market (v1, low conf.)</span><span class="v">$0.5–3B / yr originations</span></div>
+        <div class="stat"><span class="k">Outcome ceiling spread</span><span class="v">$80M → <strong>$3B+</strong></span></div>
+        <div class="stat"><span class="k">Dedicated experiential credit funds 2023–26</span><span class="v" style="color:var(--signal-red)"><strong>Zero</strong> · structural opening</span></div>
+        <div class="stat"><span class="k">Vertical AI underwriting in category</span><span class="v" style="color:var(--signal-red)"><strong>None</strong> · today</span></div>
+      </div>
+    </div>
+
+    <div class="hero-findings">
+      <div>
+        <div class="n">Finding 01 · Market</div>
+        <div class="h">The capital gap is real, shaped, and persistent.</div>
+        <div class="t">Capital is institutionally available above $25M tickets (Cosm $250M at $1B post; Topgolf $1.1B to Leonard Green; AREA15 $161M; Great Wolf $1.55B incl. $250M VICI mezz). Below that — in the $500K–$10M creative-led tier where most multi-unit roll-ups, touring shows, and single-venue operators live — capital is structurally absent in disciplined form. <strong>No dedicated experiential-credit fund has closed in 2023–26.</strong> The gap is not a coincidence; it is a structural artifact of how lenders are organized.</div>
+      </div>
+      <div>
+        <div class="n">Finding 02 · Defensibility</div>
+        <div class="h">The data moat is the structural premium — and it takes years to build.</div>
+        <div class="t">Vertical credit-data products trade at 8–15× revenue at category leadership. Trepp → Fitch April 2026 at ~$1B (~11.8× est. revenue) is the headline; CoStar/Matterport at 9.4×; Placer.ai $1.5B on $100M+ ARR (~15×). But Trepp took 47 years to build. Verisk 50+. CoStar 25+. Cherre 11. Placer.ai 9 to $100M ARR. The structural payoff is real; the time to defensible position is multi-year, not quarterly.</div>
+      </div>
+      <div>
+        <div class="n">Finding 03 · Non-dominance</div>
+        <div class="h">Four directions, no dominant choice.</div>
+        <div class="t">Each of the four product directions is the highest-scoring under at least one plausible weighting profile. <strong>D1</strong> (LOS workflow) wins on speed-to-revenue and capital efficiency. <strong>D2</strong> (managed credit vehicle) wins on direct alignment with the "infrastructure layer for structured credit" framing. <strong>D3</strong> (vertical data product) wins on terminal exit multiple. <strong>D4</strong> (embedded credit on a ticketing/payments rail) wins for any team that already owns or can acquire the operator-facing transaction infrastructure. The choice depends on what's being optimized.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§2 · The capital problem</small>Capital is shaped, not absent.</h2>
+      </div>
+      <p class="blurb">The problem Red Sky exists to solve is not that experiential operators can't access capital in absolute terms. <strong>It's shaped: capital is institutionally available at the top of the market, and structurally absent in disciplined form below it.</strong> The data needed to underwrite the lower tier is fragmented across ticketing platforms, payment processors, POS systems, attendance counters, and operator-disclosed financials. Aggregating it is hard. Without aggregation, no benchmark exists. Without a benchmark, every existing lender either declines, prices at merchant-cash-advance rates, or pushes risk onto the operator's personal guarantee.</p>
+    </div>
+
+    <div class="prose" style="max-width: 76ch; margin-bottom: 48px;">
+      <p>To understand why the gap persists, the reader needs the shape of the existing capital stack. Experiential operators today access financing through roughly five overlapping channels, each with its own structural logic and constraints.</p>
+      <p><strong>Sale-leasebacks through experiential REITs</strong> are the most institutionally scaled path. <em>VICI Properties</em> ($1.1B in 2024 commitments at 8.1% weighted yield, 92+ experiential assets) underwrote $432.9M to Bowlero / Lucky Strike across 38 locations in October 2023 and packaged $1.55B for Great Wolf Resorts in May 2024 — including a $250M VICI mezzanine layer. <em>EPR Properties</em> (~$7.0B total investments, 94% experiential across 278 properties and 54 operators) plays the same role. These deals only work at scale: stabilized operating chains with multi-unit cash flow that can support a $25M-and-up sale-leaseback. They are not available to a single-venue operator.</p>
+      <p><strong>Specialty private credit</strong> sits adjacent. <em>Ares SME Opportunities</em> ran a $2.2B / $3.7B leveraged Fund I in 2022 and a $1B first close on a $2B target in 2024 — heavily sports-tilted; the M&amp;E sleeve overlaps experiential. <em>Carlyle Global Credit</em> closed YE 2025 at $211.3B AUM and has disclosed deploying $4B+ into sports/media/entertainment over 2018–24. <em>Sixth Street</em> ($130B+ AUM), <em>Apollo</em> ($392B credit platform on Athene's insurance balance sheet), and <em>Blue Owl</em> ($315B AUM / $159.2B credit as of March 2026) are the institutional-credit counterparties at this tier. Their minimum LP-driven deployment is $25M+ per facility. Below that, the math does not work: the deal-sourcing economics and concentration limits force a floor on ticket size.</p>
+      <p><strong>Community banks and SBA lenders</strong> hold the small end. SBA 7(a) volume was $31.1B in FY 2024; SBA 504 caps at $5.5M per project. Live Oak, Huntington, and Customers Bank are starting to lend into venue operators — but their underwriting is shallow, because no experiential-specific data templates exist. The credit officer at a community bank with a hospitality book has no comparable base rates for an immersive projection-room operator or a touring-show financing request. They decline what they can't pattern-match.</p>
+      <p><strong>Merchant cash advance providers</strong> price the desperate end. Global MCA volume is projected at ~$1.4T by 2028. Pricing — 1.2–1.5× factor rates translating to 40–100%+ effective APR — destroys operator economics on the multi-year capital deployment experiential needs. Many operators in this tier are <em>trapped</em> in MCA cycles they cannot refinance out of, because the next-best lender doesn't exist.</p>
+      <p><strong>Family offices and equity crowdfunding</strong> route capital to the category, but the instrument is equity, not debt. Sports-owner family offices (Mirasol, Avenue Sports, ROCK, Bolt, Eldridge, Access Industries, Kroenke) backed Cosm's $250M Series B alongside the Lasry, Gilbert, and Blitzer families. Equity crowdfunding (Wefunder, Kingscrowd) covers the small-ticket retail layer. The instrument is dilutive — operators with working-capital and growth-debt needs are mis-served.</p>
+      <p><strong>The $500K–$10M facility tier falls through every gap:</strong> too small for specialty PE (minimum ticket structure), too unfamiliar for community banks (no category benchmarks), wrong product shape for MCA (multi-year CapEx mismatched to short-duration factor financing), wrong instrument for family-office equity (operator doesn't want dilution, needs growth debt). This is the tier where multi-unit roll-ups in early-to-mid expansion, touring shows in launch phase, and creative-led single-venue operators live — the operators with the highest growth velocity and the highest information cost to underwrite. The structural opening for any credit platform aimed at this category is precisely this tier.</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="label">Top of market · $25M+ tickets</div>
+        <h4>Capital is fully available.</h4>
+        <p>The institutional category has anchored capital partners across PE, REITs, hospitality bridge, and family offices. The deals are structured, the multiples are public, and the buyer universe is sophisticated.</p>
+        <ul>
+          <li>Cosm Series B · Jul 2024 <strong>$250M / $1B post</strong></li>
+          <li>Topgolf → Leonard Green · Nov 2025 <strong>$1.1B for 60%</strong></li>
+          <li>AREA15 Phase 2 · Jan 2025 <strong>$108M C-PACE + $53M senior</strong></li>
+          <li>Great Wolf · May 2024 <strong>$1.55B (incl. $250M VICI mezz)</strong></li>
+          <li>Bowlero/Lucky Strike → VICI · Oct 2023 <strong>$432.9M sale-lease</strong></li>
+          <li>One Beverly Hills · through Mar 2026 <strong>$4.3B+ commitments</strong></li>
+          <li>Five Iron Golf Series E · Mar 2026 <strong>Coral Tree-led</strong></li>
+        </ul>
+      </div>
+      <div style="background: var(--ink-2);">
+        <div class="label" style="color: var(--signal-amber);">$500K–$10M creative-led tier</div>
+        <h4>Capital is institutionally absent.</h4>
+        <p>Below the $25M-per-facility threshold, the lender choice set collapses. Community banks lack category benchmarks. Specialty PE has unitranche minimums of $25–50M. MCA providers price at 40–100%+ APRs. Family offices write equity, not debt. The credit-illegible operator is not credit-bad — but they're not bankable today.</p>
+        <ul>
+          <li>SBA 7(a) volume FY2024 <strong>$31.1B</strong></li>
+          <li>SBA 504 per-project cap <strong>$5.5M</strong></li>
+          <li>Specialty PE unitranche minimum <strong>~$25M</strong></li>
+          <li>MCA factor rates <strong>1.2–1.5×</strong></li>
+          <li>MCA effective APR <strong>40–100%+</strong></li>
+          <li>Dedicated experiential credit funds raised 2023–26 <strong style="color:var(--signal-red);">0</strong></li>
+          <li>Vertical AI underwriting in category <strong style="color:var(--signal-red);">0</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout amber">
+      <h5>The structural opening</h5>
+      <p>The lender who first assembles the benchmark dataset can underwrite an entire tier of operators who today either cannot access capital or access it at MCA rates. <strong>That dataset is the moat.</strong> The four Red Sky directions are four different ways to capture it — selling the underwriting workflow to existing lenders (D1), running the credit book directly (D2), selling the data as a subscription (D3), or embedding credit on the ticketing/payments rail (D4).</p>
+    </div>
+
+    <div class="callout amber">
+      <h5>What this means for underwriting</h5>
+      <p>Experiential operators at this tier are <strong>not</strong> uniformly weak credits — but the category's outcome distribution is fat-tailed, not normal. Per Bent Flyvbjerg's 16,000-project megaproject database: 92% of large capital projects come in over budget or schedule; only 0.5% deliver on budget <em>and</em> schedule <em>and</em> benefits. The reference-class distribution for high-CapEx ramp-dependent businesses is highly skewed. Borrower selection is the central operational risk for any direction that holds credit on balance sheet. The methodology spine described in §4 (Bayesian + conformal) is built around making this fat-tail risk <em>visible</em> rather than averaging it away — refusing to score where data is too thin to support a calibrated decision is a feature of the architecture, not a failure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE CATEGORY -->
+<section id="universe">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§3 · The category</small>What "experiential entertainment" actually is.</h2>
+      </div>
+      <p class="blurb">Experiential entertainment has moved from niche to institutional in 36 months. The reader who comes in fresh should know what unifies the category, how it differs from adjacent consumer markets, and what the unit-economic shape of an operator actually looks like.</p>
+    </div>
+
+    <div class="prose" style="max-width: 76ch; margin-bottom: 56px;">
+      <p>"Experiential entertainment" is the umbrella for a set of consumer categories that share four structural traits: <strong>they are physical-venue-anchored</strong> (a customer trip is the unit of demand, not a screen view or a digital subscription); <strong>they are high-CapEx upfront</strong> (an immersive venue or themed attraction requires $80M–$250M of build capital before the first ticket is sold; a mid-format LBE concept $5M–$30M per location); <strong>their revenue is format-driven and ramp-dependent</strong> (reaching steady state takes 18–36 months, and a single failed format can crater a multi-year underwriting case); and <strong>their cash flow is event- and season-sensitive</strong> (weather, calendar effects, the rhythm of city traffic).</p>
+      <p>The category spans ten functional sub-verticals (below). These differ in unit-economic shape and failure-mode signature, but they share enough underwriting structure that a single platform can address them — with sub-vertical-specific benchmarks rather than horizontal templates. What distinguishes experiential from adjacent categories matters: it is <em>not</em> restaurants (food-and-beverage operators have well-codified Uniform System of Accounts; experiential does not), <em>not</em> retail (no formal venue-yield analog to retail's sales-per-square-foot), and <em>not</em> single-screen cinema (which trades at depreciation-cycle multiples). It overlaps hospitality at the top (Great Wolf, Cabot, mixed-use luxury) and consumer services at the bottom (FECs share some unit economics with bowling alleys and golf simulators), but the credit-underwriting framework needed for the middle is structurally different.</p>
+      <p>The category's growth trajectory is institutionally legible. The location-based entertainment market grew from $7.07B in 2024 to $8.64B in 2025 and is on track for $23.94B by 2030 at a 22.5% CAGR. The broader immersive entertainment category was $137.7B in 2025, forecast to exceed $1T by 2033. NIVA's <em>State of Live</em> reports US live music at $86.2B in direct GDP / $153.1B total economic output in 2024. The capital that has arrived in the last 36 months — Cosm $1B post-money in July 2024 backed by NBA/NFL owner family offices; Topgolf $1.1B to Leonard Green in November 2025; AREA15 $161M in January 2025; Great Wolf $1.55B in May 2024 — confirms that the category is growing and structurally durable at scale. <strong>The infrastructure to finance the growth, however, has not arrived at the same pace.</strong> That mismatch is the opening below.</p>
+    </div>
+
+    <div style="margin-bottom: 32px;">
+      <div class="eyebrow" style="margin-bottom: 18px;">§3.1 · Ten sub-verticals</div>
+      <p style="color: var(--text-2); font-size: 15px; max-width: 64ch; line-height: 1.6;">The credit-platform-relevant operator universe. Sub-verticals 1, 2, 3, 4, 8, 9, 10 (and the immersive subset of eatertainment) are the focus of the four product directions below.</p>
+    </div>
+
+    <div class="universe">
+      <div class="uv">
+        <div class="n">01 · Immersive venues</div>
+        <h4>Projection rooms, dome experiences, immersive theatre</h4>
+        <div class="desc">High-CapEx single-venue concepts. Premium-ticket business model with revenue concentrated in the opening 12–18 months. Format-risk is the dominant underwriting variable — the same projection-room format that worked in one city can fail in the next.</div>
+        <div class="anchors"><span>Anchors: Cosm</span><span>Sphere Entertainment</span><span>Illuminarium</span><span>Lightroom</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">02 · Mixed-use immersive districts</div>
+        <h4>Multi-tenant immersive entertainment campuses</h4>
+        <div class="desc">Real-estate-anchored. C-PACE-financeable. Anchor-tenant economics drive the whole district. Largest single-project ticket sizes in the universe.</div>
+        <div class="anchors"><span>Anchors: AREA15</span><span>Outernet London (£1B)</span><span>Meow Wolf (5 venues + 2 announced)</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">03 · Location-based entertainment / FECs</div>
+        <h4>Multi-unit chains with predictable formats</h4>
+        <div class="desc">Roll-up-friendly. Unit economics are knowable across the chain. The most institutionally legible sub-vertical — also where most public-market consolidation is happening.</div>
+        <div class="anchors"><span>Anchors: Topgolf ($1.1B to Leonard Green Nov 2025)</span><span>Bowlero/Lucky Strike</span><span>Puttshack</span><span>Activate Games</span><span>Five Iron Golf</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">04 · VR / mixed-reality LBE</div>
+        <h4>Tech-anchored location-based entertainment</h4>
+        <div class="desc">Hardware-CapEx-heavy. Format-evolution risk — early VR formats are already outdated; the next generation requires fresh capital that the prior generation has consumed. Highest format-risk sub-vertical.</div>
+        <div class="anchors"><span>Anchors: Immersive Gamebox (32 locations)</span><span>Sandbox VR</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">05 · Themed attractions</div>
+        <h4>Amusement parks, water parks, science centers</h4>
+        <div class="desc">The IAAPA universe. Capital-intensive, long-cycle, dominated by mega-operators (Disney, Universal, Six Flags, Cedar Fair). The sub-mega tier — regional parks, water parks, science centers — is the credit-platform-relevant slice.</div>
+        <div class="anchors"><span>Regional parks</span><span>Water parks</span><span>Science centers</span><span>Museum-attraction hybrids</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">06 · Eatertainment</div>
+        <h4>Food + entertainment combined concepts</h4>
+        <div class="desc">Overlaps with FEC (sub-vertical 3). Margin-thin; operator-execution-driven. Capital structures here have to underwrite both food-and-beverage unit economics and entertainment-format risk simultaneously.</div>
+        <div class="anchors"><span>Topgolf</span><span>Bowlero/Lucky Strike</span><span>Punch Bowl Social</span><span>Dave &amp; Buster's / Main Event</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">07 · Live music / nightlife venues</div>
+        <h4>Independent music + nightlife</h4>
+        <div class="desc">NIVA <em>State of Live</em> 2024: 64% of independent venues unprofitable. $86.2B direct GDP / $153.1B total economic output. Structurally distressed at the indie tier; the venues need working-capital infrastructure that the existing credit stack does not provide.</div>
+        <div class="anchors"><span>Independent venues</span><span>Tour-route stops</span><span>Nightclubs</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">08 · Touring &amp; pop-up experiences</div>
+        <h4>Ticketed traveling shows + immersive tours</h4>
+        <div class="desc">Highest-revenue-velocity sub-vertical. Capital-intensive at launch; operator-execution-dependent. Underwriting requires <em>day-30 ticket-velocity data</em>, not annual financials — fundamentally different cadence from any other sub-vertical.</div>
+        <div class="anchors"><span>Immersive Van Gogh / Vermeer / Monet / Klimt traveling shows</span><span>Cirque resident productions</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">09 · Experiential hospitality</div>
+        <h4>Resorts + mixed-use luxury</h4>
+        <div class="desc">Real-estate-anchored. The largest tickets cross over with hospitality bridge financing (VICI, EPR mezzanine). At scale, financed through institutional structures already; the gap is at the smaller-format end.</div>
+        <div class="anchors"><span>Great Wolf ($1.55B May 2024)</span><span>Cabot</span><span>Canyon Ranch</span><span>One Beverly Hills</span></div>
+      </div>
+      <div class="uv">
+        <div class="n">10 · Ticketed cultural attractions</div>
+        <h4>Museums, aquariums, science centers, zoos</h4>
+        <div class="desc">Non-profit and for-profit mixed. Endowment-anchored capital structures common. Ticket-yield optimization is the underwriting question — a different problem from venue-build or format-risk underwriting.</div>
+        <div class="anchors"><span>Museums</span><span>Aquariums</span><span>Planetariums</span><span>Zoos</span></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h5>Three operator profiles concentrate the structural pain</h5>
+      <p><strong>Creative-led single-venue operators.</strong> A founder runs the concept; the operations team is lean; financials are typically a QuickBooks file. The operator needs growth capital, working capital, or refinancing out of MCA cycles. The ratio of <em>potentially creditworthy</em> to <em>currently bankable</em> is high — these are not credit-bad operators in absolute terms, they are credit-illegible to the lenders they approach.</p>
+      <p><strong>Touring shows and pop-up experiences.</strong> Format is high-revenue, short-cycle, capital-intensive at launch, and operator-execution-dependent. Underwriting requires category benchmarks against day-30 ticket-velocity, not annual P&amp;L. Without those benchmarks, every show is a one-off bet.</p>
+      <p><strong>Multi-unit roll-ups in early-to-mid expansion.</strong> Acquisition capital, build-out capital, and sale-leaseback structures here require unit-economics modeling sophisticated enough to underwrite. Capital exists at scale (the institutional REIT and PE counterparties are willing buyers above $25M); a disciplined credit fund at the $500K–$10M tier does not.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§3.2 · Market sizing with uncertainty</small>The funnel from category to Red Sky SAM.</h2>
+      </div>
+      <p class="blurb">Each layer is flagged with confidence. The $0.5–3B SAM at the bottom is <strong>analyst construction</strong>, not a published number. The 6× spread on the low-to-high end is the math driver — two inputs that move it most: the originations universe (triangulated, not directly reported) and the tier-share within it (unobserved at the granularity required). Both could be sharpened with proprietary data accumulated over 18–24 months of operation; neither is directly reportable today.</p>
+    </div>
+
+    <div class="funnel">
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:100%; --shade:rgba(110,155,209,0.20);"></div>
+          <div class="name"><strong>NAICS 71 · US Arts, Entertainment, Recreation</strong><span>IBISWorld 2024 · the outer envelope</span></div>
+        </div>
+        <div class="val">$508.3B</div>
+        <div class="conf" data-c="rpt">Reported</div>
+      </div>
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:84%; --shade:rgba(110,155,209,0.26);"></div>
+          <div class="name"><strong>Global LBE market</strong><span>Grand View / 360iResearch / Straits Research 2024–25</span></div>
+        </div>
+        <div class="val">$5.6–14B</div>
+        <div class="conf" data-c="rpt">Reported (defs vary)</div>
+      </div>
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:78%; --shade:rgba(110,155,209,0.30);"></div>
+          <div class="name"><strong>US live music · direct GDP</strong><span>NIVA <em>State of Live</em> 2024 · $153.1B total economic output</span></div>
+        </div>
+        <div class="val">$86.2B</div>
+        <div class="conf" data-c="rpt">Reported</div>
+      </div>
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:62%; --shade:rgba(245,166,35,0.24);"></div>
+          <div class="name"><strong>US experiential operator revenue TAM</strong><span>Red Sky-relevant subset — analyst judgment</span></div>
+        </div>
+        <div class="val">$20–40B</div>
+        <div class="conf" data-c="tri">Triangulation</div>
+      </div>
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:46%; --shade:rgba(245,166,35,0.28);"></div>
+          <div class="name"><strong>US experiential operator credit outstanding</strong><span>Not directly reported — wide band</span></div>
+        </div>
+        <div class="val">$25–80B</div>
+        <div class="conf" data-c="tri">Triangulation</div>
+      </div>
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:32%; --shade:rgba(245,166,35,0.34);"></div>
+          <div class="name"><strong>US annual originations into universe</strong><span>Triangulated from VICI / EPR / SBA / CMBS reference points</span></div>
+        </div>
+        <div class="val">$5–15B</div>
+        <div class="conf" data-c="tri">Triangulation</div>
+      </div>
+      <div class="row">
+        <div class="lbl">
+          <div class="bar" style="--w:18%; --shade:rgba(229,72,77,0.36);"></div>
+          <div class="name"><strong>Red Sky v1 SAM · $500K–$10M tier</strong><span>Analyst construction · 6× spread reflects unobserved inputs</span></div>
+        </div>
+        <div class="val">$0.5–3B / yr</div>
+        <div class="conf" data-c="con">Construction</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h5>Forward-looking market tailwinds</h5>
+      <p><strong>LBE market</strong> projected $7.07B (2024) → $23.94B (2030) at 22.5% CAGR (Grand View). <strong>Immersive entertainment</strong> projected $137.7B (2025) → $1T+ by 2033. <strong>Goldman Sachs <em>Music in the Air</em></strong> projects global recorded music $34.6B (2024) → $52.6B (2030) → $67.1B (2035), with live event demand as a derivative.</p>
+      <p>The category's growth trajectory is institutionally legible. <strong>The financing infrastructure to underwrite the growth is not.</strong> That gap is the structural opening.</p>
+    </div>
+
+    <div class="sec-head" style="margin-top: 80px;">
+      <div>
+        <h2><small>§3.3 · The competitive landscape</small>Nine adjacent categories. None fills the gap.</h2>
+      </div>
+      <p class="blurb">The Red Sky-target tier sits in a competitive blind spot — too small for generalist specialty PE, too large for community banks and SBA, mispriced by MCA, equity-only for family offices. Each adjacent category has structural reasons for not closing the gap. Those structural reasons are what makes Red Sky's opening durable.</p>
+    </div>
+
+    <div class="competition">
+      <div class="cmp-cat">
+        <h4>1 · Generalist specialty private credit</h4>
+        <div class="who">Ares SME Opps · Apollo · Carlyle Global Credit · KKR · Sixth Street · Blue Owl</div>
+        <div class="gap"><strong>Why they don't fit.</strong> Minimum LP-driven deployment is $25M+ per facility. Below that is structurally not their problem. Ares SMEO Fund II $1B first close on $2B target 2024. Carlyle Global Credit $211.3B AUM YE 2025 — $4B+ deployed into sports/media/entertainment 2018–24.</div>
+      </div>
+      <div class="cmp-cat">
+        <h4>2 · Generalist AI underwriting</h4>
+        <div class="who">Casca · Built AI · V7 Go · Numerated (→Moody's) · Ocrolus · Hyperscience · Zest AI</div>
+        <div class="gap"><strong>Why they don't fit today.</strong> All horizontal across SBA / CRE / commercial loans. None has experiential-vertical benchmarks. Casca $29M Series A Aug 2025 (Live Oak / Huntington / Bankwell customer-investors). Numerated → Moody's Nov 2024 (undisclosed, reportedly modest vs. $65B+ processed). <strong>The competitive risk: a generalist player could wrap the vertical in 24–36 months.</strong></div>
+      </div>
+      <div class="cmp-cat">
+        <h4>3 · Embedded transaction lenders</h4>
+        <div class="who">Stripe Capital · Toast Capital · Shopify Capital · Block / Square Loans</div>
+        <div class="gap"><strong>Why they don't fit today.</strong> Wrong distribution rail — experiential operators are not Shopify / Stripe / Toast merchants by default. Short-duration product shape only. <strong>But</strong> the architecture is the foundational reference for D4 — the embedded-credit model translated to an experiential ticketing-and-payments rail. Block / Square Loans &gt;$200B cumulative through Jan 2026 at sub-3% loss rates across cycles.</div>
+      </div>
+      <div class="cmp-cat">
+        <h4>4 · Community banks &amp; SBA lenders</h4>
+        <div class="who">Live Oak · Huntington · Customers Bank · Pacific Premier · SBA 7(a) / 504 ecosystem</div>
+        <div class="gap"><strong>Why they don't fit.</strong> Underwrite to standardized templates without category benchmarks. SBA 7(a) volume $31.1B FY24; 504 capped at $5.5M/project. Decline what they can't pattern-match. <strong>The credit officer here is D1's natural customer.</strong></div>
+      </div>
+      <div class="cmp-cat">
+        <h4>5 · Ticketing platforms with embedded finance</h4>
+        <div class="who">Tixr · AXS · Vivenu · Eventbrite · Spektrix · Patron Technology · vertical specialists</div>
+        <div class="gap"><strong>None has built credit.</strong> Every ticketing platform sees real-time data on operator customers — exactly what Red Sky would want for underwriting. None has used it. <strong>The single largest dormant data asset in the landscape.</strong> Tixr ran ~$1B in sales 2025 (Dragoneer + Sony backed). Vivenu €32M Series C Aug 2025. Eventbrite → Bending Spoons Dec 2025 at ~1.7× revenue.</div>
+      </div>
+      <div class="cmp-cat">
+        <h4>6 · Experiential REITs</h4>
+        <div class="who">EPR Properties · VICI Properties · Hines Mixed-Use 3.0</div>
+        <div class="gap"><strong>Why they're complementary, not competitive.</strong> EPR: $7.0B total investments, $6.6B (94%) experiential, 278 properties, 54 operators. VICI: 92+ experiential assets, $1.1B 2024 commitments at 8.1% weighted yield. Both originate sale-leasebacks at tens-of-millions tickets minimum. Natural <em>partners</em> for any Red Sky-tier platform.</div>
+      </div>
+      <div class="cmp-cat">
+        <h4>7 · Merchant cash advance providers</h4>
+        <div class="who">The MCA market broadly</div>
+        <div class="gap"><strong>Why they're the problem, not the solution.</strong> Global MCA market projected ~$1.4T by 2028. Pricing destroys operator economics: 1.2–1.5× factor rates → 40–100%+ effective APRs. Many Red Sky-target operators are trapped in MCA cycles they cannot refinance out of.</div>
+      </div>
+      <div class="cmp-cat">
+        <h4>8 · Family offices &amp; equity crowdfunding</h4>
+        <div class="who">Mirasol · Avenue Sports · ROCK · Bolt · Eldridge · Access Industries · Kroenke / Wefunder / Kingscrowd</div>
+        <div class="gap"><strong>Why they don't fit the problem.</strong> Sports-owner FOs write equity, not debt — dilutive, not working capital. Equity crowdfunding small-ticket and retail. The instrument is wrong for the structural need.</div>
+      </div>
+      <div class="cmp-cat">
+        <h4>9 · Institutional infrastructure</h4>
+        <div class="who">Trepp · Moody's Analytics · S&amp;P Global · KBRA · Fitch · Verisk</div>
+        <div class="gap"><strong>No experiential dataset exists.</strong> Trepp covers CMBS; Moody's Analytics covers banking + CRE via Numerated; S&amp;P MI covers broad market; KBRA rates structured credit. No published experiential methodology. <strong>The data-layer competitive risk for D3.</strong> Any of these could decide experiential is large enough to build for.</div>
+      </div>
+    </div>
+
+    <div class="callout amber">
+      <h5>Why the gap persists despite being well-known</h5>
+      <p><strong>The data-aggregation problem is real and expensive.</strong> A defensible benchmark requires accumulating operator-level performance data across multiple ticketing platforms (no horizontal aggregator exists), multiple POS systems, multiple bank-statement formats, multiple operator-coined COAs, weather APIs, demographic services, and event-type taxonomies. Multi-year integration effort.</p>
+      <p><strong>The operator population's data-sharing willingness is unknown.</strong> Operators historically protect this data. Ticketing platforms are viewed as utilities, not data partners. The "give to get" value proposition has not been tested at scale.</p>
+      <p><strong>The tier is small enough that generalists pass and large enough that vertical specialists never get scale.</strong> $0.5–3B annual originations is a category but structurally below institutional ticket-size thresholds. Empirical evidence: <em>no dedicated experiential-credit fund of meaningful size has closed in 2023–2026</em>. CalPERS Q4 2024 ($20.5B private market commitments) and CalSTRS H1 2025 ($5.2B) disclosed no experiential line item. New Mexico SIC's commitment to Ares SMEO II + Meow Wolf is the closest LP signal, routed through generalist platforms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE PRODUCT -->
+<section id="product">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§4 · The technology unlock</small>Why software is the answer (and why it's hard).</h2>
+      </div>
+      <p class="blurb">The structural reason software and AI matter to experiential credit is data poverty. The reader who isn't deep in financial-services tech needs to see <strong>why</strong> the existing system fails for a software-tractable reason, and <strong>what</strong> the technology unlock actually requires building.</p>
+    </div>
+
+    <div class="prose" style="max-width: 76ch; margin-bottom: 56px;">
+      <p>The structural reason credit fails in this category is not that the operators are uncreditworthy. It is that the data needed to evaluate them is scattered across incompatible systems. A typical experiential operator stitches together <strong>ticketing across 4–6 vendors</strong> (Ticketmaster, AXS, Eventbrite, Tixr, Vivenu, or a vertical specialist), <strong>POS across 3–4 systems</strong> (Toast, Square, Lightspeed, or a venue-specific system), <strong>bank statements as PDF exports</strong>, <strong>QuickBooks or Xero files with operator-coined account names</strong>, and <strong>no industry chart of accounts to standardize against</strong>. There is a National Restaurant Association Uniform System of Accounts for restaurants; a USALI for hotels; no equivalent for experiential entertainment.</p>
+      <p>Every existing horizontal AI underwriting platform has solved the same data-aggregation problem in adjacent verticals. <em>Casca</em> ($29M Series A August 2025, customer-investors Live Oak / Huntington / Bankwell) brought protocol-level standardization to SBA and commercial loans. <em>Numerated</em> (acquired by Moody's November 2024 for undisclosed but reportedly modest terms relative to $65B+ of lending processed across 500K+ small businesses) bundled bank-grade LOS with Moody's CRE data. <em>Built AI</em> ($6M seed November 2025) is building the equivalent for CRE investors with Howard Hughes, CBRE, LondonMetric, and Knight Frank as design partners. None of these has done experiential — they are horizontal across SBA / CRE / commercial. The vertical-experiential wrapper does not exist today, and a generalist player can build it in 24–36 months once the category is large enough to justify the engineering investment. That is the time window for any direction.</p>
+      <p>What "vertical data product at category leadership" looks like in dollar terms is well-documented in adjacent reference markets. <em>Trepp</em> (CMBS data) sold to Fitch in April 2026 for ~$1B against analyst-estimated revenue of ~$85M — an implied ~11.8× revenue multiple. <em>Placer.ai</em> (foot-traffic intelligence) reached a $1.5B post-money valuation in August 2024 on $100M+ ARR — roughly 15×. <em>CoStar / Matterport</em> (CRE spatial data) closed at $1.6B in February 2025 against $169.7M FY24 revenue — 9.4×. <em>Reonomy / Altus</em> (CRE property intelligence) exited in November 2021 at $201.5M on ~$21M ARR — ~10× ARR. <em>Cherre</em> (CRE knowledge graph) raised a $30M Series C in September 2024 at an estimated $250–500M valuation. <strong>These multiples exist because category-leadership data creates defensible moats in lending, underwriting, and benchmarking.</strong></p>
+      <p>The structural cost is time. Trepp took 47 years to accumulate its CMBS data set. Verisk took 50+ years to build its insurance-data dominance. CoStar took 25+ years to become the de facto CRE standard. Cherre is 11 years old. Placer.ai needed 9 years to reach $100M ARR. The "infrastructure layer for structured credit" framing — the idea that one standardized data exchange should underpin multiple lenders, investors, and operators in a category — is what the CMBS market built through <strong>CREFC IRP v8.4</strong>, the Investor Reporting Package adopted by every major CMBS-relevant participant. <strong>The experiential equivalent does not exist.</strong> Building it requires simultaneous operator adoption, lender training, and continuous calibration against real-world performance — a multi-year compounding effort. The payoff justifies the investment; the patience required is not common. The four product directions below are four different ways to deploy capital and engineering against this same structural opening.</p>
+    </div>
+
+    <div class="sec-head" style="margin-top: 24px;">
+      <div>
+        <h2><small>§4.5 · The cross-cutting capabilities</small>Six things any direction has to build.</h2>
+      </div>
+      <p class="blurb">Whatever direction is chosen, six capabilities are load-bearing. They are the spine of the product. The depth at which each is built varies by direction; the existence of each is universal. The architectural choices below are grounded in adjacent reference systems (FinRegLab's 2023 empirical study on regulated explainability, Flyvbjerg's megaproject database for projection methodology, Stanford RegLab's 2024 legal-AI hallucination study for synthesis-layer evaluation).</p>
+    </div>
+
+    <div class="capabilities">
+      <div class="cap">
+        <div class="num">Capability 01</div>
+        <h4>Credit analytics methodology</h4>
+        <p>A model that ingests operator data, produces a credit-risk assessment, and exposes the reasoning. Required: <strong>explainable, calibrated, produces uncertainty bands that widen at small N, supports cold-start strategies</strong> for sub-verticals where data is sparse.</p>
+        <p>The architectural choice with the right properties for Red Sky's small-N high-noise regime is <strong>Bayesian hierarchical modeling with conformal prediction on top.</strong> The Bayesian layer produces principled point estimates plus credible intervals; the conformal wrapper provides distribution-free coverage guarantees that don't depend on the prior being correctly specified. The failure mode at small N is widening credible intervals (informative) rather than overconfident wrong point estimates (misleading) — which is the worst possible property for adverse-action defense.</p>
+        <div class="depth">
+          <span class="d"><strong>D1</strong> Essential v1</span><span class="d"><strong>D2</strong> Essential v1</span><span class="d"><strong>D3</strong> Secondary</span><span class="d"><strong>D4</strong> Simplified</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="num">Capability 02</div>
+        <h4>Projection validation filter</h4>
+        <p>A financial and statistical review layer that compares operator-submitted forecasts against market data, historical performance, comparable venues, and probability models. Required properties: <strong>explainable, auditable, surfaces specific overstated assumptions</strong> in plain language an underwriter can interrogate.</p>
+        <p>No single validation method is sufficient. A defensible filter is a stack: <strong>reverse stress testing</strong> ("what would have to be true for the projection to hold?" — a 65%-miss against forecast means the implied case requires reality to be 1.65× what the operator actually delivered); <strong>reference-class forecasting</strong> (Flyvbjerg's iron law: 92% of megaprojects come in over budget or schedule); <strong>comparable cohort benchmarking</strong> against the panel of operator outcomes the platform accumulates over time; and <strong>sensitivity / scenario modeling</strong> tied to the underlying Bayesian credible intervals.</p>
+        <div class="depth">
+          <span class="d"><strong>D1</strong> Essential v1 (strongest differentiator)</span><span class="d"><strong>D2</strong> Essential v1</span><span class="d"><strong>D3</strong> Important (sellable module)</span><span class="d"><strong>D4</strong> Less load-bearing</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="num">Capability 03</div>
+        <h4>ML-assisted synthesis with citation discipline</h4>
+        <p>Credit memo generation, scenario modeling, portfolio narratives — turning structured + unstructured data into long-form prose a credit committee will sign. Modular / agentic RAG with hybrid retrieval, hierarchical+proposition chunking, multi-step planner→retriever→extractor→writer.</p>
+        <p>The hallucination problem is the structural risk. Stanford RegLab 2024 found leading legal-AI products hallucinate on 17–33% of queries; Harvey reports 0.2% on tasks specifically tuned for. <strong>Production targets: ≥99% pointer-integrity pass rate, ≥95% claim-evidence alignment, hard refusal on residual.</strong> Anything weaker is not a credit product. Buy the synthesis layer (Anthropic Citations API + Hebbia / Brightwave class), build the data ingestion.</p>
+        <div class="depth">
+          <span class="d"><strong>D1</strong> Essential (memos)</span><span class="d"><strong>D2</strong> Essential (committee + LP)</span><span class="d"><strong>D3</strong> Important (publications)</span><span class="d"><strong>D4</strong> Less load-bearing</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="num">Capability 04</div>
+        <h4>Operator data integration architecture</h4>
+        <p>Ingest across at least eight upstream types: bank, accounting (GL/AR/AP), ticketing, POS, payments, CRM, payroll, documents. Lakehouse-anchored (Snowflake / Databricks) with medallion bronze/silver/gold pattern; graph + vector are v2/v3.</p>
+        <p>Buy commodity (<strong>Codat ~$30–80K/yr</strong> covers ~80% of accounting; Plaid / MX <strong>~$25–60K/yr</strong> for banking; Pinwheel for payroll; Senzing for entity resolution; Ocrolus / Sensible for bank-statement extraction). <strong>The data-aggregation gap is in ticketing.</strong> No horizontal aggregator exists — each platform is a direct integration. The most underestimated line item in the brief. The Red Sky internal "Experiential Entertainment Uniform System of Accounts" is a load-bearing artifact in v1 — the seed of a future Direction 3 standards-setting role.</p>
+        <div class="depth">
+          <span class="d"><strong>D1</strong> Moderate · vendor-neutral</span><span class="d"><strong>D2</strong> Full · rail-privileged</span><span class="d"><strong>D3</strong> Maximal</span><span class="d"><strong>D4</strong> Maximal · rail-bounded</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="num">Capability 05</div>
+        <h4>Risk modeling &amp; uncertainty quantification</h4>
+        <p>Beyond the credit-analytics layer: stress-test outputs (CCAR-pattern scenario modeling for institutional-grade reporting), portfolio-level expected loss with credible intervals, and a <strong>refusal-aware decision layer</strong> that says "we don't know enough to score this" rather than producing an overconfident point estimate.</p>
+        <p>Refusal is a feature, not a failure. The Bayesian + conformal architecture supports this directly — when the credible interval is wider than the lender's risk-tolerance threshold, the product refuses rather than scores. This is the structural protection against the adverse-selection failure modes the experiential category has produced repeatedly in this cycle.</p>
+        <div class="depth">
+          <span class="d"><strong>D1</strong> Heavy</span><span class="d"><strong>D2</strong> Heavy + CCAR stress</span><span class="d"><strong>D3</strong> Secondary</span><span class="d"><strong>D4</strong> Simplified · continuous recalibration</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="num">Capability 06</div>
+        <h4>Portfolio monitoring</h4>
+        <p>Near-real-time (daily-to-hourly) ingestion, not true streaming. Streaming infrastructure is wrong for a $500K–$10M loan book. Covenant tracking patterned on <strong>CREFC IRP v8.4</strong> (the CMBS standard). Rule-based MVP for v1; STL + Prophet anomaly detection v2; ML anomaly v3. Three-audience UX: operator-facing compliance · internal portfolio · capital-partner-facing pack.</p>
+        <p><strong>The "deal flywheel" is real but bounded.</strong> Block's stable sub-3% loss rate across $200B is the strongest evidence that continuous-data underwriting improves through cycles. But the mechanism is data scale, not portfolio size. A realistic 18-month portfolio of 10–20 operators is too small to retrain a credit model usefully. The flywheel kicks in around Year 3, not Year 1. Buy the fund-admin shell (Allvue / Solovis tier ~$50–200K/yr); build the operator-data ingestion and experiential-specific covenant logic on top.</p>
+        <div class="depth">
+          <span class="d"><strong>D1</strong> Light (v2 or descoped)</span><span class="d"><strong>D2</strong> Essential v1</span><span class="d"><strong>D3</strong> Heavy (benchmarking)</span><span class="d"><strong>D4</strong> Maximal · continuous</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h5>Buy what's commodity. Build what's domain-specific.</h5>
+      <p><strong>Buy:</strong> Codat / Rutter for accounting integration · Plaid / MX for banking · Pinwheel for payroll · Senzing for entity resolution · Snowflake / Databricks for the lakehouse · Ocrolus / Sensible for bank-statement extraction · Hebbia / Brightwave for citation-grade synthesis · Allvue / Solovis for the fund-admin shell · Frontier LLMs (Claude, GPT) for narrative-document extraction.</p>
+      <p><strong>Build:</strong> The ticketing-platform connectors (no horizontal aggregator exists in this category) · The Experiential Entertainment Chart of Accounts — a standardized line-item taxonomy that does not exist off-the-shelf · The Bayesian hierarchical underwriting model (Stan / PyMC) · The projection-validation rules-and-LLM filter · The operator portal (intake, benchmarking, "give-to-get" UX) · The watchlist trigger logic for the experiential vertical · The credit memo template with citation-grade synthesis.</p>
+      <p>This posture is direction-agnostic. What changes is the <em>center of gravity</em>. D1 builds the LOS workflow and projection-validation filter heaviest. D2 builds the portfolio-monitoring stack and credit-committee workbench heaviest. D3 builds the data architecture and operator portal heaviest. D4 builds the platform connectors and recoupment infrastructure heaviest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE FOUR DIRECTIONS -->
+<section id="directions">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§5 · Six framings of the same insight</small>The four directions, deep.</h2>
+      </div>
+      <p class="blurb">Each direction below is framed as a <strong>product vision</strong> (what does it do, for whom) plus a <strong>financial profile</strong> (revenue model, capital required, unit economics, multiples, exit pathway). The four directions share the same structural insight — there is a credit-underwriting gap for experiential operators in the $500K–$10M tier, and the data needed to close it is being built for the first time. They differ in <em>which side of the gap</em> the product sits on. Click any direction code in the matrix or outcome chart below to filter the rest of the page.</p>
+    </div>
+
+    <div class="activebar empty" id="activebar">
+      <span class="label">Active direction</span>
+      <span class="badge" id="active-badge">—</span>
+      <button class="clear" type="button" id="clear-dir">Clear filter</button>
+    </div>
+
+    <div class="dir-deep-grid">
+
+      <!-- D1 -->
+      <div class="dir-deep" data-code="D1">
+        <div class="head">
+          <div>
+            <div class="code">▌ Direction 1 · Red Sky LOS</div>
+            <h3>The vertical underwriting workflow.</h3>
+            <p class="tagline">"A loan-origination &amp; credit-decisioning workflow tool sold to third-party lenders underwriting experiential operators."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$80–500M</div>
+            <div class="span">5–7 yr horizon · median $150–250M</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>What it is</h5>
+            <p>A vertical-SaaS workflow tool that sits inside a third-party lender's underwriting process. Borrower intake → document intelligence → Bayesian risk score with conformal intervals → projection-validation filter → citation-grounded credit memo → adverse-action notice. The lender's existing servicing platform takes over post-origination.</p>
+            <h5>Who pays</h5>
+            <p>The credit officer at a third-party lender: community banks with hospitality / FEC books (Live Oak, Huntington, Customers Bank, Pacific Premier illustratively); specialty lenders (Channel Partners, CIT Equipment, Wintrust, North Mill); C-PACE specialty (North Bridge, Petros, Nuveen Green, CounterpointePACE); family offices doing direct lending into experiential.</p>
+            <h5>What's the structural opening</h5>
+            <p>Casca closed $29M Series A Aug 2025 with Live Oak / Huntington / Bankwell as customer-investors — the playbook works. <strong>But Casca is horizontal across SBA / commercial.</strong> No vertical-experiential wrapper exists today. Time-to-defensible-vertical is bounded by how fast a horizontal player can wrap the category (24–36 months).</p>
+            <h5>Scope honesty</h5>
+            <p>D1 deliberately descopes portfolio monitoring, which is a Phase 1 capability in the brief. D1 is a defensible product choice but it is <em>not</em> a complete instantiation of the brief — it is a subset focused on LOS-without-monitoring. If portfolio monitoring is non-negotiable, D1 alone does not satisfy the brief; consider D5a or shift to D2.</p>
+            <h5>The buyer set at exit</h5>
+            <p>Ratings / data strategics pay for data depth (Moody's, S&amp;P, Fitch, Verisk — Numerated → Moody's Nov 2024 at undisclosed, reportedly modest). Vertical-SaaS roll-ups pay 2–4× revenue (Constellation, Roper, Thoma Bravo, Vista). Banking-software platforms pay mid-range with integration risk (nCino public at ~3× trailing revenue mid-2026). <strong>A D1 without proprietary data is the wrong shape for the highest-multiple ratings-strategic exit</strong> — it caps at the vertical-SaaS-roll-up floor.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Revenue model</dt><dd><strong>SaaS</strong> · platform fee $20–80K/yr + per-seat $5–15K + per-funded-deal $500–3,000</dd></div>
+                <div class="row"><dt>v1 revenue (12 mo)</dt><dd><strong>$50–300K</strong> · 1–3 design partners</dd></div>
+                <div class="row"><dt>v3 revenue (36 mo)</dt><dd><strong>$3–8M ARR</strong> · 10–25 customers</dd></div>
+                <div class="row"><dt>Terminal (Y5)</dt><dd><strong>$15–40M ARR</strong></dd></div>
+                <div class="row"><dt>Operating capital Y1</dt><dd><strong>$4–7M</strong> · vendor costs $300–800K</dd></div>
+                <div class="row"><dt>Unit economics target</dt><dd>LTV $200K–$1M · CAC $30–100K · LTV/CAC 3–5×</dd></div>
+                <div class="row"><dt>Exit multiple range</dt><dd>3–5× ARR commodity · 5–10× data-rich · 8–12× AI/data-rich category leader</dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Reference comps</strong>
+              Casca · $29M Series A Aug 2025 (Canapi-led; YC alum; ~$33M cumulative)<br/>
+              Numerated → Moody's · Nov 2024 · undisclosed (~$32M lifetime raised; 500K+ businesses served)<br/>
+              nCino · public · FY25 rev $540.7M · mcap ~$1.75B = ~3× trailing<br/>
+              Tipalti · $200M Series G Sept 2025 at ~$2B / ~10× rev<br/>
+              Built AI · $6M seed Nov 2025 (Howard Hughes, CBRE, LondonMetric, Knight Frank as customers)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D2 -->
+      <div class="dir-deep" data-code="D2">
+        <div class="head">
+          <div>
+            <div class="code">▌ Direction 2 · Red Sky Credit Platform</div>
+            <h3>The credit infrastructure as a managed vehicle.</h3>
+            <p class="tagline">"A purpose-built underwriting + portfolio-monitoring system, deployed in service of a managed credit vehicle holding experiential-operator credit risk on a fund basis."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$90–230M</div>
+            <div class="span">7–10 yr · franchise sale + fund econ</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>What it is</h5>
+            <p>A full-stack credit infrastructure: underwriting + portfolio monitoring + ongoing operator visibility, deployed in service of a managed credit vehicle that holds experiential-operator credit risk. <strong>The product is both the system that does the underwriting <em>and</em> the fund whose portfolio the system underwrites.</strong> The two pieces compound: each new deal sharpens the underwriting model; the underwriting model widens the addressable deal funnel.</p>
+            <h5>Who pays</h5>
+            <p>The v1 customer is the credit committee of the affiliated vehicle. Institutional LPs and capital partners review the committee's work during diligence and quarterly performance reviews. The full LP-facing reporting infrastructure (CCAR-pattern stress, ILPA-aligned reporting templates, citation-grade memo synthesis) is part of the product.</p>
+            <h5>What's the structural opening</h5>
+            <p><strong>No dedicated experiential-credit fund of meaningful size has closed in 2023–26.</strong> Despite the institutionalization of the category (Cosm $1B post; AREA15 $161M; Sphere $1.22B FY25; Topgolf $1.1B; Great Wolf $1.55B; One Beverly Hills $4.3B+), capital reaches the category through generalist sports/M&amp;E platforms (Ares, Silver Lake, KKR) and real-estate vehicles (VICI, EPR, Hines) — never through a thesis-specific credit fund. CalPERS Q4 2024 and CalSTRS H1 2025 disclosed no experiential allocation. The infrastructure layer the category needs does not exist.</p>
+            <h5>Why this matches the structural framing</h5>
+            <p>The category language — "scalable infrastructure layer for structured credit", "system of record", "the financial operating system for experiential" — maps to a fund / capital-markets platform, not a SaaS product. The long-term vision (institutional lending marketplaces, dynamic revenue-based financing, asset-level securitization, AI-assisted capital structuring) is fund-economics language. <strong>D2 is the structural anchor</strong> for any team building toward category-defining position.</p>
+            <h5>The buyer set at exit</h5>
+            <p>Global alternatives platforms (KKR, Apollo, Ares, Blue Owl, Sixth Street) at the Arctos-comp ratio. The KKR / Arctos deal (Feb 2026, $1.4B initial + up to $550M earnout vesting 2031–33 against ~$15B AUM at sale) is the single available comparable. Specialty-credit franchises with proprietary deal access in underserved sectors trade at <strong>~9.3% of AUM initial / up to ~13% if earnout vests</strong>. Single data point, not a market benchmark — but the cleanest available exit logic in the directional set.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Revenue model</dt><dd><strong>Fund economics</strong> · 1.5–2% mgmt fee on committed capital + 15–20% carry above 8% hurdle</dd></div>
+                <div class="row"><dt>v1 revenue (12 mo from close)</dt><dd><strong>$1.5–3M</strong> mgmt fee on Fund I</dd></div>
+                <div class="row"><dt>v3 revenue (36 mo)</dt><dd><strong>$4–8M</strong> mgmt fee + accruing carry</dd></div>
+                <div class="row"><dt>Terminal AUM (Y7–10)</dt><dd><strong>$200M–$1B</strong> across Fund I/II + SMA / co-invest</dd></div>
+                <div class="row"><dt>Cumulative fund econ Y10</dt><dd><strong>$25–80M</strong></dd></div>
+                <div class="row"><dt>Operating capital Y1</dt><dd><strong>$4–7M</strong> platform spend + fund vehicle ~$200M committed + sponsor commit per market norm (5–10% = $10–20M) + fund-formation legal $1–2M one-time + ongoing compliance $500K–$1.5M/yr</dd></div>
+                <div class="row"><dt>Franchise-sale multiple</dt><dd>~9.3–13% of AUM (Arctos single data point)</dd></div>
+                <div class="row"><dt>IRR risk</dt><dd>12–15% gross target · adverse selection producing 5–8% net compresses the franchise ratio materially below the Arctos comp</dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Reference comps</strong>
+              Arctos → KKR · Feb 2026 · $1.4B + $550M earnout on ~$15B AUM = ~9.3–13% of AUM<br/>
+              Ares SMEO Fund I · $2.2B / $3.7B leveraged 2022 · Fund II $1B first close on $2B target 2024<br/>
+              Carlyle Global Credit · $211.3B AUM YE 2025 · $4B+ deployed sports/M&amp;E 2018–24<br/>
+              Sixth Street ($130B+ AUM) · Apollo ($392B credit on Athene balance sheet) · Blue Owl ($315B AUM / $159.2B credit Mar 2026)<br/>
+              Roark Capital · $30B+ AUM specialty franchised-business platform
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D3 -->
+      <div class="dir-deep" data-code="D3">
+        <div class="head">
+          <div>
+            <div class="code">▌ Direction 3 · Red Sky Data</div>
+            <h3>The vertical credit-data product.</h3>
+            <p class="tagline">"A longitudinal benchmark dataset on experiential operator performance, sold as subscription to lenders, REITs, ratings agencies, and capital allocators."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$400M–$3B+</div>
+            <div class="span">10–15 yr · median $150–500M @ Y5–7</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>What it is</h5>
+            <p>A longitudinal, institutionally-credible benchmark dataset on experiential operator performance — attendance, ticket-yield, opex structure, ramp curves, failure modes, sub-vertical-level base rates. Sold as a subscription. The product is the dataset and the analytics around it, not the underwriting decision.</p>
+            <h5>Who pays</h5>
+            <p>Institutional buyers of vertical-credit data: ratings agencies (Moody's, S&amp;P, Fitch post-Trepp, KBRA); CRE intelligence (CoStar, Cherre, MSCI RCA, Green Street); institutional lenders (Ares, Carlyle, KKR, Sixth Street, Apollo, Blue Owl); experiential REITs (EPR, VICI); family offices; operators themselves at v3+ (benchmark-your-venue product).</p>
+            <h5>The dependency observation</h5>
+            <p>D3 is downstream of D2 in the strategic dependency graph. D3 needs proprietary longitudinal operator-performance data — which is most naturally produced by running a credit book (D2) that accumulates the data through borrower-permissioned data-sharing. <strong>D3 as a primary direction without a D2-equivalent data-acquisition strategy means launching a data product with no proprietary data</strong>, which collapses D3 to a $5–15M industry-research-publication business, not a $50M+ Trepp-comp ceiling.</p>
+            <p>Two credible framings: <strong>D3 as Y5+ optionality emerging from D2</strong> (= D5b sequencing); or <strong>D3 as a sharpened distinct direction whose central problem is the "give-to-get" portal</strong> (operator adoption without lending relationship).</p>
+            <h5>The honest timeline</h5>
+            <p>Vertical-data category leadership takes 15–25 years in adjacent categories. Trepp = 47 years. Verisk = 50+. CoStar = 25+. Cherre = 11. Placer.ai = 9 years to $100M ARR. <strong>D3 cannot credibly claim category-defining data in &lt;5 years.</strong> An early structural advantage from any latent data assets — operator-network access, a ticketing/payments rail, real-estate-sponsor visibility into operator tenants — is real but the path to defensible position is still measured in many years, not quarters.</p>
+            <h5>The buyer set at exit</h5>
+            <p>Highest-multiple exit pathway in the directional set. Ratings / data strategics pay 8–15× revenue at category leadership. Trepp → Fitch April 2026: ~$1B against analyst-estimated $85M revenue = ~11.8× (multiple is secondary-derived — neither party disclosed Trepp revenue). CoStar / Matterport Feb 2025: $1.6B at 9.4× revenue. Placer.ai: $1.5B at $100M+ ARR ≈ 15×. Reonomy / Altus Nov 2021: $201.5M at ~10× ARR.</p>
+            <p><strong>Pagaya cautionary counter.</strong> FY25 revenue $1.3B (+26%, $371M adj EBITDA, $3.6T cumulative loan applications) but market cap $1.2B = &lt;1× sales mid-2026. Credit categories trade at sub-1× sales when the cycle turns and origination quality is questioned. The 8–15× band is the upside case; Pagaya is the reminder of compression.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Revenue model</dt><dd><strong>Data subscription</strong> · $50–500K ACV (operator self-serve low end → ratings agency high end)</dd></div>
+                <div class="row"><dt>v1 revenue (18 mo)</dt><dd><strong>$750K–$3M</strong> stated · honest pressure-test: <em>realistic $0–450K</em> if institutional buyers wait for longitudinal record</dd></div>
+                <div class="row"><dt>v3 revenue (60 mo)</dt><dd><strong>$10–30M ARR</strong> · 50–150 subscribers</dd></div>
+                <div class="row"><dt>Terminal (Y8–12)</dt><dd><strong>$50–250M ARR</strong> at Trepp / Placer / Cherre scale</dd></div>
+                <div class="row"><dt>Operating capital Y1</dt><dd><strong>$5–10M</strong> · partnership pipeline $300–800K · no fund vehicle</dd></div>
+                <div class="row"><dt>Unit economics target</dt><dd>95%+ gross retention · 115–125% NRR at category leadership</dd></div>
+                <div class="row"><dt>Exit multiple range</dt><dd>8–15× revenue at category leadership</dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Reference comps</strong>
+              Trepp → Fitch · April 2026 · ~$1B / Q2 close (~5–11.8× rev est., analyst-derived)<br/>
+              CoStar → Matterport · Feb 2025 · $1.6B / 9.4× rev / Matterport FY24 $169.7M · 50B sq ft<br/>
+              Placer.ai · Aug 2024 · $1.5B post-money / $100M+ ARR = ~15× rev<br/>
+              Cherre Series C · Sept 2024 · $30M · est. $250–500M val · LPs Nuveen / RXR / TA Realty<br/>
+              VTS · $125.5M ARR / $1.7B val · CBRE-led Series E<br/>
+              Reonomy → Altus · Nov 2021 · $201.5M / ~$21M ARR = ~10×<br/>
+              Pagaya · public · FY25 rev $1.3B / 29.3% adj EBITDA / market cap $1.2B = &lt;1× sales · cautionary
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D4 -->
+      <div class="dir-deep" data-code="D4">
+        <div class="head">
+          <div>
+            <div class="code">▌ Direction 4 · Red Sky Embedded</div>
+            <h3>Credit on a ticketing + payments rail.</h3>
+            <p class="tagline">"Advances against operator GMV flowing through a ticketing and payments rail, with daily automated recoupment from processed volume — the Shopify Capital / Toast Capital / Stripe Capital model applied to experiential."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$40–350M</div>
+            <div class="span">5–7 yr · as platform feature</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>What it is</h5>
+            <p>The Shopify Capital / Toast Capital / Stripe Capital / Block-Square Loans architecture applied to the experiential vertical. An operator already processing meaningful GMV through a ticketing-and-payments rail gets a "Capital" offer inside the platform dashboard: "you're approved for up to $X advance against your processed volume, repayable as Y% of daily card transactions." The architecture barely separates credit from payments — the underwriting model lives on top of the processing data, and the recoupment is automatic (the platform withholds a fixed percentage of daily processed volume, typically 9–15%, until the advance is repaid).</p>
+            <h5>The structural prerequisite</h5>
+            <p>D4 requires <strong>owning or partnering with</strong> the operator-facing transaction infrastructure. Without the rail, there is no merchant base to underwrite against. This is the direction that pays back to a team that already has, or can acquire, an experiential-vertical ticketing or payments platform at meaningful scale. For a team without the rail, D4 reads as "build or acquire the rail, then layer the credit product on top" — which collapses into a different opportunity profile (vertical-platform acquisition + embedded credit overlay).</p>
+            <h5>Who pays</h5>
+            <p>The experiential operator already on the rail. Eligibility scoring is continuous — every merchant on the platform is evaluated against the embedded-credit eligibility model (Stripe Capital analog: 6+ months processed volume, $50K+ annualized, low chargeback rate, predictable seasonality). In-product approval and acceptance happens in hours, not weeks. Distribution is zero-CAC because the eligible merchants are already authenticated users of the platform.</p>
+            <h5>Why no ticketing platform has built this yet</h5>
+            <p>Every ticketing platform in the category sees real-time data on operator customers — exactly what an underwriting platform would want. <em>None</em> has used it for credit. <strong>This is the single largest dormant data asset in the experiential landscape.</strong> The structural reason ticketing platforms haven't built credit is that they are payments-and-distribution companies, not credit shops — they lack the underwriting team and the risk-capital appetite. The teams who could build credit have not owned the rail. D4 is the direction where those two halves finally meet.</p>
+            <h5>The exit logic</h5>
+            <p>Embedded credit's exit pathway <em>is</em> the platform's exit pathway. D4 is not separately marketable — it is a feature of the integrated ticketing + payments + credit business. At consolidated $50–100M revenue at 5–10× multiple = $250M–$1B+ integrated EV. D4's attributable contribution is 15–35% = $40–350M. Reference: Toast public ~2.6× revenue mid-2026 · Cvent / Blackstone $4.6B June 2023 · Cvent / ON24 $400M December 2025.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Revenue model</dt><dd><strong>Origination fees + holdback take-rate</strong> · 3–8% of platform GMV originated annually · 1.5–5% net margin on originations</dd></div>
+                <div class="row"><dt>At rail GMV of $500M</dt><dd>Originations <strong>$15–40M/yr</strong> · net margin <strong>$225K–$2M/yr</strong></dd></div>
+                <div class="row"><dt>At rail GMV of $1.5–2B</dt><dd>Originations <strong>$45–160M/yr</strong> · net margin <strong>$675K–$8M/yr</strong></dd></div>
+                <div class="row"><dt>v1 revenue (12–18 mo)</dt><dd><strong>$200K–$2M</strong> from initial originations</dd></div>
+                <div class="row"><dt>Operating capital Y1</dt><dd><strong>$5–8M</strong> operating spend + <strong>$50–100M originations capital</strong> + warehouse facility per market norm</dd></div>
+                <div class="row"><dt>Originations capital source</dt><dd>Warehouse facility from a specialty-credit counterparty (Sixth Street / Apollo / Blue Owl class) is the structural answer · alternatives are balance-sheet or pooled with a related credit vehicle</dd></div>
+                <div class="row"><dt>Underwriting bar</dt><dd>Block / Square Loans' sub-3% loss rate across $200B cumulative is the benchmark for continuous-data underwriting</dd></div>
+                <div class="row"><dt>Exit multiple range</dt><dd>5–10× consolidated revenue (D4 share 15–35%)</dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Reference comps</strong>
+              Stripe Capital · 81,000 advances/loans 2025 · not separately marketable<br/>
+              Toast Capital · &gt;$1B 2024 orig · Toast FY25 rev $6.15B / ~$2B ARR / public mcap ~2.6× revenue<br/>
+              Shopify Capital · $4.2B 2025 orig ($3.0B 2024) · $1.6B EOY gross loans receivable<br/>
+              Block / Square Loans · &gt;$200B cumulative through Jan 2026 · stable sub-3% loss rates across cycles<br/>
+              Cvent → Blackstone · Jun 2023 · $4.6B · venue-tech platform multiple benchmark<br/>
+              Bending Spoons → Eventbrite · Dec 2025 · $500M / ~1.7× revenue (stalled-marketplace floor)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D5a -->
+      <div class="dir-deep" data-code="D5a">
+        <div class="head">
+          <div>
+            <div class="code">▌ Direction 5a · D1 + D2 hybrid</div>
+            <h3>Workflow product plus in-house credit book.</h3>
+            <p class="tagline">"Sell the LOS to third-party lenders, and run an in-house credit book on the same platform. Highest combined ceiling — also the most governance-intensive structure."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$200–700M</div>
+            <div class="span">7–10 yr · sum of D1 + D2</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>Why this is a credible product vision</h5>
+            <p>The combined hybrid captures two halves of the category-level opportunity simultaneously: LOS workflow features serving the software product, structured-credit-deployment positioning serving the fund. D2's portfolio becomes validation evidence that D1's customers want to see — "the team underwriting their own book at scale picks the model that survives." D1's customer base becomes a graduation channel for D2's portfolio operators — operators who scale past the in-house book's facility size can be referred into the LOS customer's pipeline.</p>
+            <h5>The structural challenge — conflict-of-interest</h5>
+            <p>The hybrid amplifies a structural concern. The LOS is sold to community-bank and family-office credit officers — and the same platform <em>also</em> runs an in-house credit vehicle that, at the margin, competes for the same deals those customers are underwriting. <strong>The information barrier required to make this defensible is rigorous and operationally expensive.</strong></p>
+            <h5>Required governance discipline</h5>
+            <p>The hybrid requires an information barrier between the LOS commercial team (selling to external lenders) and the in-house credit committee (underwriting the captive book). LOS customer deal-flow data must not be visible to the in-house committee; in-house book underwriting decisions must not be visible to the LOS commercial team. Decoupled commercial-and-credit decisions; written information-barrier policies; counsel-drafted credit-agreement carve-outs for default scenarios. Governance-heavy and operationally expensive — but standard practice at every major bank that runs both a third-party lending platform and a proprietary book.</p>
+            <h5>When D5a makes sense</h5>
+            <p>If the team has high conviction that (a) D1 alone has a low ceiling, (b) D2 alone has high fund-formation risk, (c) the two together create a feedback loop, and (d) the governance framework can be executed rigorously from day one — D5a is the credible synthesis. A single high-profile governance failure damages both lines simultaneously, so the cost of getting governance wrong is non-linear.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Revenue model</dt><dd><strong>SaaS + fund econ</strong> running in parallel</dd></div>
+                <div class="row"><dt>Y3 maturity</dt><dd>D1 <strong>$3–8M ARR</strong> + D2 <strong>$4–8M mgmt fee</strong> = <strong>$7–16M combined</strong></dd></div>
+                <div class="row"><dt>Operating capital Y1</dt><dd><strong>$5.5–9M</strong> (dual product-build) + fund vehicle ~$200M + sponsor commit</dd></div>
+                <div class="row"><dt>Risk additionality</dt><dd>D1 risks + D2 risks + <strong>governance-discipline risk</strong> on top</dd></div>
+                <div class="row"><dt>Combined ceiling</dt><dd><strong>$200–700M</strong></dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Buyer logic</strong>
+              Compound of D1 and D2 buyer sets. Risk: a single high-profile governance failure damages both lines simultaneously and compresses both buyer sets' willingness to pay.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D5b -->
+      <div class="dir-deep" data-code="D5b">
+        <div class="head">
+          <div>
+            <div class="code">▌ Direction 5b · D2 → D3 sequenced</div>
+            <h3>Fund first. Data product harvested Y5+.</h3>
+            <p class="tagline">"Build D2's credit platform and run it for 5 years. The portfolio's accumulated longitudinal data feeds D3's subscription product at Y5+."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$200–550M</div>
+            <div class="span">10+ yr · "Cherre-meets-Arctos"</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>Why this is the natural sequencing</h5>
+            <p>D3 depends on D2 (or a D2-equivalent data-acquisition strategy) to generate the proprietary data feedstock. Running D3 first without that means launching a data product with no proprietary data — which collapses D3 to a $5–15M industry-publication business. D5b inverts: <strong>build D2's fund first; let the portfolio accumulate operator-level performance data over years 1–5</strong> (under the borrower-permissioned data-sharing the credit agreement already requires); at Y5+, decide whether to harvest the accumulated dataset into a subscription product.</p>
+            <h5>The "Cherre-meets-Arctos" framing</h5>
+            <p>Arctos (specialty credit franchise sold to KKR at ~9–13% of AUM) is the model for D2's exit. Cherre (CRE knowledge graph; $30M Series C September 2024; est. $250–500M val) is the model for D3's data-layer scale. <strong>Combined, the asset has both fund-economics annuity <em>and</em> data-product subscription revenue.</strong></p>
+            <h5>Why this is the cleanest synthesis under Profile B</h5>
+            <p>If the team's strategic-goal weighting prioritizes largest 10-year terminal value, D5b captures D2's near-term revenue, builds toward D3's high-multiple ceiling, and defers D3's hardest problem (operator data acquisition without a lending relationship) until 5 years of fund-running credibility and a proprietary dataset exist.</p>
+            <h5>Risk inheritance</h5>
+            <p>Inherits all of D2's risks through Y5 (fund-capitalization, adverse selection, related-party governance, macro cycle). Adds D3's risks at the Y5+ harvest point (institutional buyer-set maturity; whether the longitudinal panel is rich enough; whether the data-product team can be assembled at the Y5+ inflection). The Y5+ risks are deferred but real.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Revenue model · Y1–Y5</dt><dd>D2's fund economics</dd></div>
+                <div class="row"><dt>Revenue model · Y5+</dt><dd>D2's economics + D3 incremental data subscription</dd></div>
+                <div class="row"><dt>Y10 outcome</dt><dd>D2 franchise sale <strong>$45–130M</strong> + cumulative fund econ <strong>$40–80M</strong> + D3 incremental at $15–30M ARR × 8–12× = <strong>$120–360M</strong></dd></div>
+                <div class="row"><dt>Combined ceiling Y10</dt><dd><strong>$200–550M</strong></dd></div>
+                <div class="row"><dt>Operating capital</dt><dd>D2 profile through Y5; D3 incremental Y5+</dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Buyer logic</strong>
+              Compound of D2 and D3 buyer sets. Cleanest synthesis if the strategic-goal weighting is closest to Profile B (largest 10-year terminal value).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BASELINE -->
+      <div class="dir-deep" data-code="B0">
+        <div class="head">
+          <div>
+            <div class="code">▌ Baseline · "Do nothing / organic"</div>
+            <h3>The floor comparator.</h3>
+            <p class="tagline">"Hire one senior credit consultant on retainer. Underwrite 5–10 experiential deals over 18 months. Decide which platform to build at year 2 with empirical evidence."</p>
+          </div>
+          <div class="ceiling-tag">
+            <div class="lbl">Realistic ceiling</div>
+            <div class="v">$1–3M</div>
+            <div class="span">Indefinite · no franchise</div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="narrative">
+            <h5>Why this is presented as a comparator</h5>
+            <p>The baseline is <strong>not</strong> a serious direction in its own right. It produces a small portfolio with no platform leverage, no engineering moat, no proprietary asset that compounds. The cumulative outcome at year 5 is the cumulative fund economics on a $5–25M deployed book — perhaps $1–3M with no franchise-sale option.</p>
+            <h5>What the baseline does for the synthesis</h5>
+            <p>It sets a floor on the marginal value of any platform direction. <strong>If running 5–10 manually-underwritten deals over 18 months produces materially better underwriting decisions than the v1 platform at $4–7M Y1 burn, the platform direction is not worth the marginal $3.5–6.5M.</strong></p>
+            <p>The platform directions have to clear "produces better underwriting than $250–400K spent on a consultant + spreadsheets." The research suggests they do for portfolio sizes above ~5–10 deals because the data-architecture and projection-validation infrastructure scale where a consultant doesn't. The comparator forces honest scrutiny of platform-vs-organic marginal value.</p>
+          </div>
+          <div>
+            <div class="financials">
+              <h5>Financial profile</h5>
+              <dl>
+                <div class="row"><dt>Cost Y1+Y2</dt><dd><strong>$250–400K</strong> · 1 senior credit consultant on retainer</dd></div>
+                <div class="row"><dt>Output</dt><dd>5–10 underwritten deals · 18–24 months of post-close performance data</dd></div>
+                <div class="row"><dt>Deal economics</dt><dd>Modest · whatever the consultant's deal book produces</dd></div>
+                <div class="row"><dt>Franchise asset</dt><dd>None</dd></div>
+                <div class="row"><dt>Outcome ceiling</dt><dd><strong>$1–3M</strong> cumulative fund econ</dd></div>
+              </dl>
+            </div>
+            <div class="comps">
+              <strong>Why include it</strong>
+              The comparator anchors the marginal-value question. Without it, the $4–7M Y1 burn of any direction is uncontested. With it, the team has to defend platform spending against an empirical alternative.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§5.7 · Cross-direction matrix</small>Twelve dimensions side by side.</h2>
+      </div>
+      <p class="blurb">The directional comparison in one table. Dollar-range cells render as mini bars against a unified log scale. Click any column header to set the active direction filter; the cells in that column highlight and others dim. Click row labels to scan a dimension across directions.</p>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix" id="matrix">
+        <thead><tr id="matrix-head"></tr></thead>
+        <tbody id="matrix-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME CEILINGS -->
+<section id="ceilings">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§9.5 · Realistic ceilings</small>What's the biggest each direction can get?</h2>
+      </div>
+      <p class="blurb">Horizontal range per direction on a log-scale axis from $1M to $3B. Open dot = realistic median outcome. Time-to-outcome on the right. The Baseline comparator sits at the bottom — included to anchor the marginal-value question. <strong>D3 has the highest theoretical ceiling and the longest path to defensibility. D2 has the most defined exit pathway via the Arctos comp. D4's ceiling is structurally bounded by the rail's own growth.</strong></p>
+    </div>
+
+    <div class="outcome" id="outcome">
+      <div class="scale-row">
+        <span>Direction</span>
+        <div class="axis">
+          <span style="left:0%">$1M</span>
+          <span style="left:20%">$10M</span>
+          <span style="left:40%">$100M</span>
+          <span style="left:60%">$1B</span>
+          <span style="left:80%">$3B</span>
+        </div>
+        <span style="text-align:right">Time</span>
+      </div>
+      <div id="outcome-rows"></div>
+      <div class="callout amber" style="margin-top: 28px;">
+        <h5>The Arctos caveat applies to D2 specifically</h5>
+        <p>The ~9.3–13% of AUM ratio that anchors D2's franchise-sale logic is a <strong>single data point</strong> (KKR acquiring Arctos, Feb 2026 — $1.4B initial + $550M earnout against ~$15B AUM), not a market benchmark. The price reflected sector positioning + LP relationships + regulatory access + track record. <strong>Realized IRR is the unobserved variable that determines whether D2's $90–230M outcome converges to the upper or lower bound.</strong> A first-time experiential-credit fund targeting 12–15% gross IRR with an 8% hurdle that delivers 5–8% net IRR due to adverse selection would still pay management fees but no carry — and the franchise-sale ratio compresses materially below the Arctos comp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION FRAMEWORK -->
+<section id="framework">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§6 · Decision framework</small>Eight criteria. Four profiles. One choice.</h2>
+      </div>
+      <p class="blurb">The four directions are non-dominated — each is the highest-scoring under at least one plausible weighting profile. The team's choice depends on what it is optimizing for. The eight criteria below are the load-bearing axes of the choice. Click any criterion to expand. <strong>The framework deliberately excludes organizational, hiring, and political dimensions per the v2 scope.</strong></p>
+    </div>
+
+    <div class="criteria" id="criteria-list"></div>
+
+    <div class="callout green" style="margin-top: 40px;">
+      <h5>What the framework does not resolve</h5>
+      <p>The framework is a tool for the team to apply its own weighting, not a scorecard that produces an answer. It does not tell the team which strategic-goal profile (A, B, C, D) is right for its situation. It does not resolve the brief's two-halves tension (feature list maps to D1; structural framing maps to D2). It does not substitute for the market evidence the team needs to gather (§7).</p>
+      <p><strong>What the framework does provide:</strong> the criteria are exhaustive of the product-and-financial axes the team should weight. If the team finds itself wanting to weight a criterion not listed here, that criterion is either organizational/political (out of scope for v2) or it's a sub-criterion of an existing one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE SIMULATOR -->
+<section id="simulator">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§6.2 · Strategic-goal weighting</small>Pick your profile. See the favored direction.</h2>
+      </div>
+      <p class="blurb">Four illustrative weighting profiles produce different favored directions. Click any profile to see the ranked output and the reasoning. These are illustrative — the team should produce its own weighting profile against the eight criteria above. <strong>The four directions are non-dominated; each wins under at least one profile.</strong></p>
+    </div>
+
+    <div class="sim">
+      <div class="profiles" id="profiles"></div>
+      <div class="sim-output" id="sim-output">
+        <div class="placeholder">Pick a profile on the left to see which direction it favors and why.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARABLES -->
+<section id="comparables">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§3.6–3.10 · Reference transactions</small>Comparable exits, in detail.</h2>
+      </div>
+      <p class="blurb">Eighteen transactions that anchor each direction's exit pathway and bound the financial profile. Arctos/KKR is D2's single-data-point comp. Trepp/Fitch is D3's headline. Casca and Numerated bound D1. Toast / Shopify / Block bound D4. Filter by direction to focus on what's relevant to a specific bet.</p>
+    </div>
+
+    <div class="comp-filters" id="comp-filters">
+      <button class="active" data-filter="all" type="button">All</button>
+      <button data-filter="D1" type="button">D1 — LOS</button>
+      <button data-filter="D2" type="button">D2 — Credit Platform</button>
+      <button data-filter="D3" type="button">D3 — Data</button>
+      <button data-filter="D4" type="button">D4 — Embedded</button>
+    </div>
+
+    <div class="comps" id="comps"></div>
+  </div>
+</section>
+
+<!-- EXIT PATHWAYS -->
+<section id="exits">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§9.7 · Buyer-set framing</small>Build with the eventual acquirer in mind.</h2>
+      </div>
+      <p class="blurb">The product roadmap should be built with the eventual acquirer in mind. A D3 product built without category-leadership data depth is the wrong shape for Moody's / Fitch / S&amp;P. A D2 fund built without sponsor-grade governance is the wrong shape for KKR / Apollo / Ares. A D1 platform built without proprietary data accumulation is the right shape only for the vertical-SaaS-roll-up floor exit. The buyer set determines the product specification.</p>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead><tr>
+          <th class="dim-col">Direction</th>
+          <th>Primary buyer set</th>
+          <th>Secondary buyer set</th>
+          <th>Multiple range</th>
+          <th>Time to exit</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">D1 — LOS</th>
+            <td class="dir-d1">Ratings / data strategics: Moody's, Fitch, S&amp;P, Verisk</td>
+            <td class="dir-d1">Vertical-SaaS roll-ups (Constellation, Roper, Thoma Bravo, Vista); banking-software (nCino, MeridianLink)</td>
+            <td class="dir-d1">2–8× ARR · 3–5× commodity · 5–10× data-rich · 8–12× AI/data-rich leader</td>
+            <td class="dir-d1">5–7 yrs</td>
+          </tr>
+          <tr>
+            <th scope="row">D2 — Credit Platform</th>
+            <td class="dir-d2">Global alternatives platforms: KKR, Apollo, Ares, Blue Owl, Sixth Street</td>
+            <td class="dir-d2">Specialty-credit strategic acquirers; insurance balance-sheet platforms (Athene-style)</td>
+            <td class="dir-d2">~9–13% of AUM (Arctos single comp)</td>
+            <td class="dir-d2">7–10 yrs</td>
+          </tr>
+          <tr>
+            <th scope="row">D3 — Data</th>
+            <td class="dir-d3">Ratings / data strategics: Moody's, S&amp;P, Fitch, Verisk</td>
+            <td class="dir-d3">CRE intelligence platforms (CoStar, Cherre, MSCI); category-leader proptech buyers</td>
+            <td class="dir-d3">8–15× revenue at category leadership</td>
+            <td class="dir-d3">10–15 yrs</td>
+          </tr>
+          <tr>
+            <th scope="row">D4 — Embedded</th>
+            <td class="dir-d4">Integrated ticketing + payments + credit platform exit</td>
+            <td class="dir-d4">Vertical-platform acquirers (Cvent/Blackstone class)</td>
+            <td class="dir-d4">5–10× consolidated revenue · D4 share 15–35%</td>
+            <td class="dir-d4">5–7 yrs</td>
+          </tr>
+          <tr>
+            <th scope="row">D5a — Hybrid</th>
+            <td class="dir-d5a">Compound of D1 and D2 buyer sets</td>
+            <td class="dir-d5a">Both</td>
+            <td class="dir-d5a">Compound — both multiples apply</td>
+            <td class="dir-d5a">7–10 yrs</td>
+          </tr>
+          <tr>
+            <th scope="row">D5b — Sequence</th>
+            <td class="dir-d5b">Compound of D2 and D3 buyer sets</td>
+            <td class="dir-d5b">Both</td>
+            <td class="dir-d5b">Compound — fund AUM ratio + data revenue multiple</td>
+            <td class="dir-d5b">10+ yrs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
+      <h5>Strategic relationships to monitor</h5>
+      <p><strong>For D2 graduation flow:</strong> Sixth Street ($130B+ AUM), Apollo ($392B credit on Athene balance sheet), Blue Owl ($315B AUM / $159.2B credit) are the natural take-out counterparties for operators who scale past the $500K–$10M tier into institutional unitranche territory. Building a graduation pipeline early creates flywheel effects for the credit book.</p>
+      <p><strong>For D3 acquirer logic:</strong> Moody's → Numerated suggests Moody's appetite for AI-LOS as a wedge to expand non-ratings revenue. Fitch → Trepp suggests Fitch's appetite for the data layer beneath ratings opinions. S&amp;P Market Intelligence's segment-level structure makes it a natural acquirer for vertical data products. Build the data layer with one of these in mind from year one.</p>
+      <p><strong>For D4 warehouse capital:</strong> Sixth Street / Apollo / Blue Owl underwrite the $50–100M originations-warehouse facility routinely. Embedded-credit products of this scale are well-mapped to the institutional-credit market's standard warehouse template.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RISKS -->
+<section id="risks">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§8 · Risk matrix</small>Severity × probability. Direction tags.</h2>
+      </div>
+      <p class="blurb">The risks below are organized by severity (rows) and probability (columns). Catastrophic risks marked in signal red are the binary gates: fund-capitalization for D2; operator-overlap-unknown for D4. The active-direction filter at the top dims unrelated risks. <strong>Risks are not reasons to avoid building Red Sky — they are reasons to choose the direction whose risk profile matches the team's risk tolerance.</strong></p>
+    </div>
+
+    <div class="risks" id="risk-matrix">
+      <div></div>
+      <div class="col-head">Probability: low</div>
+      <div class="col-head">Probability: moderate</div>
+      <div class="col-head">Probability: high</div>
+
+      <div class="row-head">Catastrophic</div>
+      <div class="cell" data-cell="cat-low"></div>
+      <div class="cell" data-cell="cat-mod"></div>
+      <div class="cell" data-cell="cat-high"></div>
+
+      <div class="row-head">Serious</div>
+      <div class="cell" data-cell="ser-low"></div>
+      <div class="cell" data-cell="ser-mod"></div>
+      <div class="cell" data-cell="ser-high"></div>
+
+      <div class="row-head">Moderate</div>
+      <div class="cell" data-cell="mod-low"></div>
+      <div class="cell" data-cell="mod-mod"></div>
+      <div class="cell" data-cell="mod-high"></div>
+    </div>
+
+    <div class="callout" style="margin-top: 40px;">
+      <h5>Match the direction's risk profile to the team's risk tolerance</h5>
+      <p><strong>Concentrated execution risk:</strong> D1 fits. Product-build complexity is real but mitigable; the rest (adverse selection, horizontal wrapper, thin buyer set) are competitive-market risks the team can manage.</p>
+      <p><strong>Binary catastrophic risk in exchange for higher ceiling:</strong> D2 fits. Fund-capitalization risk is binary, but the franchise-sale ceiling at the Arctos-comp ratio is materially higher than D1's vertical-SaaS ceiling.</p>
+      <p><strong>Long-horizon patience risk in exchange for highest ceiling:</strong> D3 (or D5b) fits. The 5–15 year time-to-defensible is the structural cost; the 8–15× revenue multiple at category leadership is the structural payoff.</p>
+      <p><strong>Platform-bounded ceiling in exchange for maximal existing-rail leverage:</strong> D4 fits. The rail's GMV bounds the ceiling; maximal asset leverage and short build-time are the payoffs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFY NEXT -->
+<section id="verify">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>§7 · What to verify next</small>Six questions before committing.</h2>
+      </div>
+      <p class="blurb">The four directions are non-dominated. The team's choice is partly a strategic-goal weighting question and partly an empirical question about market evidence. The six questions below are the highest-leverage market-and-product gates. They are deliberately framed around market evidence (operator demand, capital-allocator appetite, data-feedstock viability, product-market fit signals) rather than organizational, hiring, or structural questions. <strong>Each question's answer narrows the directional space.</strong></p>
+    </div>
+
+    <div class="verify" id="verify-list"></div>
+
+    <div class="callout green" style="margin-top: 40px;">
+      <h5>Continuous market signals to monitor independent of direction</h5>
+      <p><strong>Sphere Entertainment quarterly earnings</strong> as the most relevant public-market proxy for institutional durability in the immersive category. (Q4 2025: $169M revenue beat ~$155M consensus; FY25 $1.22B; Abu Dhabi franchise announced July 2025.)</p>
+      <p><strong>Topgolf-Callaway split execution</strong> and any related FEC-tier transactions. <strong>Trepp/Fitch and CoStar/Matterport post-close integration patterns</strong> as the closest reference for an institutional acquisition of a vertical-data product. <strong>Any new dedicated experiential credit fund formation announcements</strong> — Form D filings, public LP commitment disclosures, anchor LP letters of intent.</p>
+      <p><strong>Section 1033 court status and CFPB final rule reissuance</strong> as the open-banking infrastructure that affects bank-data integration depth. <strong>Casca, Built AI, Numerated / Moody's vertical-experiential product launches</strong> as the competitive horizon for D1. <strong>Experiential ticketing-platform M&amp;A and consolidation</strong> — Tixr, Eventbrite (Bending Spoons-owned), AXS, Vivenu (€32M Series C Aug 2025). <strong>Experiential operator distress and bankruptcy filings</strong> as the format-failure-rate signal.</p>
+    </div>
+
+    <div class="seq" style="margin-top: 40px;">
+      <h3>Recommended sequence of market evidence to gather first</h3>
+      <p class="blurb">Given the highest-leverage gates, run the experiments in this order. Each narrows the directional space; the answers are inputs to the directional choice, not commitments to it.</p>
+      <ol>
+        <li><span class="what"><strong>Q1 (rail eligibility overlap).</strong> Analyze any available ticketing-payments rail for credit-eligible-operator overlap. Resolves D4 binary; informs D1 referral channel and D2/D3 data-feedstock value. ~4–8 weeks.</span></li>
+        <li><span class="what"><strong>Q5 (rail GMV trajectory).</strong> 24–36 month base / bull / bear scenarios. Caps D4; informs D2 and D5a cross-direction. ~2–4 weeks.</span></li>
+        <li><span class="what"><strong>Q3 (operator data-sharing willingness).</strong> "Give to get" portal prototype + 15–25 operator interviews. Gates D3 standalone; informs D2 and D5b. ~6–10 weeks.</span></li>
+        <li><span class="what"><strong>Q4 (lender-customer demand).</strong> 30–50 prospect direct-sales experiment. Gates D1 viability. ~3–6 months for first design-partner conversion.</span></li>
+        <li><span class="what"><strong>Q2 + Q6 (IRR profile of a disciplined book).</strong> Pilot underwriting against 5–10 deals tracked over 18–24 months. Determines D2 and D5a / D5b viability empirically.</span></li>
+        <li><span class="what"><strong>Directional selection.</strong> Use the criteria framework + a documented weighting profile + the gathered evidence to choose a direction (or hybrid). Document rationale and contingencies. Begin product build.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="glossary">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><small>Reference</small>Key terms.</h2>
+      </div>
+      <p class="blurb">A working glossary for readers who aren't deep in the experiential-credit or vertical-data space. Terms used throughout the page, defined briefly.</p>
+    </div>
+
+    <div class="glossary">
+      <dl>
+        <dt>LBE</dt><dd>Location-Based Entertainment — physical venues built around an entertainment experience (FECs, immersive venues, VR arcades, etc.). The Red Sky-relevant subset of the broader NAICS 71 category.</dd>
+        <dt>FEC</dt><dd>Family Entertainment Center — multi-attraction venue typically combining food/beverage with entertainment (bowling, mini-golf, arcade, virtual reality). Topgolf, Bowlero, Puttshack are the institutional benchmarks.</dd>
+        <dt>SAM / TAM</dt><dd>Serviceable Addressable Market / Total Addressable Market — sizing concepts where SAM is the slice TAM that a product can realistically reach. Red Sky v1 SAM is the $500K–$10M facility tier ($0.5–3B annual originations, analyst construction).</dd>
+        <dt>GMV</dt><dd>Gross Merchandise Value — the total transaction volume processed through a platform. The GMV of whatever ticketing-and-payments rail D4 sits on is the structural cap on what D4 can originate against (typically 3–8% of platform GMV annually).</dd>
+        <dt>MCA</dt><dd>Merchant Cash Advance — short-term financing at factor-rate pricing (1.2–1.5× → 40–100%+ effective APR). The instrument many Red Sky-target operators are trapped in today.</dd>
+        <dt>C-PACE</dt><dd>Commercial Property Assessed Clean Energy — financing for energy-efficiency improvements repaid through property-tax assessments. AREA15 used $108M of C-PACE in its Phase 2 financing.</dd>
+        <dt>LOS</dt><dd>Loan Origination System — software the lender uses to intake, evaluate, decision, and document a loan. D1 is Red Sky positioned as a vertical-experiential LOS.</dd>
+        <dt>Bayesian hierarchical model</dt><dd>A statistical model where parameters share information across nested groups (e.g., operator nested in sub-vertical). Failure mode at small N is widening credible intervals (informative), not overconfident wrong points (misleading).</dd>
+        <dt>Conformal prediction</dt><dd>A distribution-free wrapper that provides exact finite-sample coverage guarantees on prediction intervals. Doesn't depend on the underlying model being correctly specified.</dd>
+        <dt>Adverse-action notice</dt><dd>The notification a lender must send a denied applicant explaining the principal reasons for the denial, with specificity sufficient for the applicant to take corrective action. CFPB Circular 2022-03 governs this for AI-driven decisions.</dd>
+        <dt>SR 11-7 / SR 26-2</dt><dd>Federal Reserve / OCC guidance on model risk management. SR 26-2 (April 2026) replaced SR 11-7 with a more principles-driven framework. Capital partners expect compliance-equivalent governance.</dd>
+        <dt>CREFC IRP</dt><dd>Commercial Real Estate Finance Council Investor Reporting Package — the standardized monthly data exchange underlying the US CMBS market. The reference framework for Red Sky's portfolio-monitoring covenant tracking.</dd>
+        <dt>Carry / Hurdle</dt><dd>In a private fund, carry is the GP's share of profits above a preferred return (the hurdle, typically 8%). D2's franchise-sale value depends on the carry being meaningful — IRR underperformance produces management fees but no carry.</dd>
+        <dt>Sponsor commitment</dt><dd>The GP's own capital co-invested in a fund alongside LP capital (typically 5–10% of fund size). The "skin in the game" institutional LPs expect.</dd>
+        <dt>Form D</dt><dd>The SEC filing required for private placements under Regulation D. A new Form D filing tied to an experiential-credit fund vehicle would signal that the first thesis-specific raise in the category is in-market rather than pre-announced — a directional signal worth tracking.</dd>
+        <dt>Warehouse facility</dt><dd>Short-term institutional credit that funds loan originations before they're securitized or sold. D4's $50–100M originations capital would typically sit in a warehouse from Sixth Street, Apollo, or Blue Owl class lenders.</dd>
+        <dt>Recoupment / Holdback</dt><dd>In embedded credit (D4 architecture), the platform withholds a fixed percentage (typically 9–15% per Stripe Capital benchmark) of daily processed volume until the advance is repaid. Automated; no separate collection process.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="col">
+        <h4>The choice is non-dominated.</h4>
+        <p>This page is a market thesis on what to build, why, and how it pays back — not a recommendation of which direction is right for any specific team. The four directions are non-dominated; the choice depends on what the team is optimizing for, what existing assets it brings, and what its capital horizon is. The page exists to make sure that choice gets made with the relevant facts surfaced, the financial profiles bounded with reference comparables, and the market evidence sequenced.</p>
+      </div>
+      <div class="col meta">
+        <div>Red Sky · <span class="src">v3 market thesis</span></div>
+        <div style="margin-top:6px">Updated 2026-05-13</div>
+        <div style="margin-top:6px">For fresh readers</div>
+      </div>
+    </div>
+    <p class="disclaimer">"Capital is shaped, not absent. The category is real, growing, and underserved at the exact tier where the data needed to underwrite it is hardest to assemble. The first team to assemble it wins the moat."</p>
+  </div>
+</footer>
+
+<script>
+/* DATA */
+const DIRECTIONS = [
+  { code:"D1", name:"Red Sky LOS", tone:"var(--tone-d1)", customer:"Third-party lender credit officer", revenue:"SaaS + per-funded-deal fee", v1:"v1 in 9–12 mo", capital:"$4–7M Y1", v3rev:"$3–8M ARR Y3", ceiling:"$80–500M", ceilingLo:80, ceilingHi:500, ceilingMed:200, time:"5–7 yrs", defens:"24–36 mo", moat:"Workflow lock-in + cohort data", rail:"Low — vendor-neutral", risk:"Adverse selection + horizontal wrapper", shape:"Decision-support workflow product" },
+  { code:"D2", name:"Red Sky Credit Platform", tone:"var(--tone-d2)", customer:"Managed credit vehicle's committee + LPs", revenue:"Mgmt fee (1.5–2% AUM) + carry", v1:"Platform v1 4–6 mo; meaningful v1 gated by fund close", capital:"$4–7M Y1 + ~$200M fund + sponsor commit", v3rev:"$4–8M mgmt fee + carry", ceiling:"$90–230M", ceilingLo:90, ceilingHi:230, ceilingMed:150, time:"7–10 yrs", defens:"36–60 mo", moat:"Capital franchise + proprietary access", rail:"High — privileged inputs from any owned ticketing/payments rail or operator-network relationships", risk:"Fund-capitalization risk", shape:"Underwriting + fund as one product" },
+  { code:"D3", name:"Red Sky Data", tone:"var(--tone-d3)", customer:"Institutional data subscribers", revenue:"Data subscription ($50–500K ACV)", v1:"v1 in 12–18 mo", capital:"$5–10M Y1", v3rev:"$10–30M ARR Y5", ceiling:"$400M–$3B+", ceilingLo:400, ceilingHi:3000, ceilingMed:800, time:"10–15 yrs", defens:"60–180 mo", moat:"Proprietary data + standards-setting", rail:"Very high — operator-portal data layer", risk:"Time-to-defensible patience misalignment", shape:"Vertical credit-data product" },
+  { code:"D4", name:"Red Sky Embedded", tone:"var(--tone-d4)", customer:"Operator on a ticketing/payments rail", revenue:"Origination fee + daily holdback", v1:"v1 in 12–18 mo", capital:"$5–8M Y1 + $50–100M orig. + warehouse", v3rev:"$675K–$8M net margin Y3", ceiling:"$40–350M", ceilingLo:40, ceilingHi:350, ceilingMed:120, time:"5–7 yrs (rail-bounded)", defens:"24–36 mo", moat:"Platform integration + switching cost", rail:"Maximal — direction requires owning or partnering with the rail", risk:"Operator overlap unknown (binary)", shape:"Embedded credit feature of a platform" },
+  { code:"D5a", name:"D1 + D2 hybrid", tone:"var(--tone-d5a)", customer:"Lenders + the in-house credit committee", revenue:"SaaS + fund economics", v1:"Dual product-build 9–12 mo", capital:"$5.5–9M Y1 + fund vehicle + sponsor commit", v3rev:"$7–16M combined Y3", ceiling:"$200–700M", ceilingLo:200, ceilingHi:700, ceilingMed:400, time:"7–10 yrs", defens:"36–60 mo", moat:"Workflow + capital franchise", rail:"High", risk:"Conflict-of-interest governance", shape:"Two halves built in parallel" },
+  { code:"D5b", name:"D2 → D3 sequence", tone:"var(--tone-d5b)", customer:"Credit committee → data subscribers Y5+", revenue:"Fund econ Y1–5; subscription Y5+", v1:"D2 v1 then D3 layered Y5+", capital:"D2 profile through Y5", v3rev:"D2 econ; D3 add Y5+", ceiling:"$200–550M", ceilingLo:200, ceilingHi:550, ceilingMed:325, time:"10+ yrs", defens:"60+ mo", moat:"Both, sequenced", rail:"Very high", risk:"Long execution + data feedstock", shape:"Fund first, data product layered Y5+" },
+  { code:"B0", name:"Baseline (organic)", tone:"var(--tone-b0)", customer:"Internal — no external customer", revenue:"Deal economics only", v1:"Consultant on retainer + spreadsheets", capital:"$250–400K Y1+Y2", v3rev:"Modest deal economics", ceiling:"$1–3M", ceilingLo:1, ceilingHi:3, ceilingMed:2, time:"Indefinite", defens:"—", moat:"None (no franchise)", rail:"Low", risk:"No platform leverage", shape:"Floor comparator — sets marginal value bar" }
+];
+const MATRIX_DIMS = [
+  { key:"customer", label:"Primary customer" },
+  { key:"shape", label:"Product shape" },
+  { key:"revenue", label:"Revenue model" },
+  { key:"v1", label:"v1 effort" },
+  { key:"capital", label:"Capital required" },
+  { key:"v3rev", label:"v3 revenue" },
+  { key:"ceiling", label:"Long-term ceiling", isRange:true },
+  { key:"time", label:"Time to outcome" },
+  { key:"defens", label:"Time to defensible" },
+  { key:"moat", label:"Defensibility shape" },
+  { key:"rail", label:"Rail / asset leverage" },
+  { key:"risk", label:"Top single risk" }
+];
+const CRITERIA = [
+  { n:"01", name:"Market addressability", sub:"TAM & SAM in $ terms", desc:"Total addressable + serviceable addressable market. D1: $150M–$1B TAM (5–10K credit officers × $30–100K ACV) · $100–500M SAM US-focused. D2: $0.5–3B annual originations TAM at the $500K–$10M tier · realistic v3 capture 0.5–5% = $2.5M–$150M originations · AUM Y7 plausibly $500M–$1B. D3: $50–500M TAM at full institutional capture. D4: $15–160M annual originations bounded by the underlying ticketing-payments rail's scale (3–8% of platform GMV per Shopify Capital / Toast Capital / Stripe Capital benchmarks). The reader should not over-weight precise TAM numbers — the underlying sizing is analyst-constructed at low confidence.", favors:[{d:"D2",lead:true,note:"$0.5–3B originations"},{d:"D3",lead:false,note:"Highest theoretical ceiling"},{d:"D1",lead:false,note:"Clear SAM math"}], weight:"Premise is 'create a new market category' vs. 'win a defined existing market' — or capital partners want 10×/100× TAM math." },
+  { n:"02", name:"Product clarity", sub:"How concrete is v1?", desc:"D1 most concrete: workflow product with defined outputs (risk score, credit memo, adverse-action notice). Customer and value are clear. D2 concrete in product terms but v1 maturity gated by capitalized fund existence. D3 least concrete at v1: high-ceiling but v1 deliverable depends on small subscriber set buying on faith before longitudinal record exists. D4 concrete in product terms; v1 gated by operator-overlap data.", favors:[{d:"D1",lead:true,note:"Most concrete v1"},{d:"D4",lead:false,note:"Clear in-product UX"}], weight:"Customer pilots need to land inside 6 months, or the team wants to validate willingness-to-pay before deeper commitment." },
+  { n:"03", name:"Defensibility shape", sub:"Workflow vs. capital vs. data",
+    desc:"D1 workflow lock-in + customer-cohort-data accumulation, time-to-mature 24–36 months. D2 capital franchise + proprietary deal access, 36–60 months. D3 proprietary longitudinal dataset + standards-setting + institutional buyer-network lock-in, 60–180 months. D4 structural integration with an owned ticketing-and-payments rail + platform switching-cost moat, 24–36 months. Highest valuation outcomes go to companies that own something irreplaceable.",
+    favors:[{d:"D3",lead:true,note:"Strongest long-term moat"},{d:"D2",lead:false,note:"Sponsor + capital access"},{d:"D4",lead:false,note:"Maximum rail leverage"}],
+    weight:"Horizontal generalists (Casca, Built AI, Numerated/Moody's) are reading as moving quickly to wrap experiential, or exit horizon is 7–10+ years where moat decay matters." },
+  { n:"04", name:"Capital intensity", sub:"Y1 burn + structural capital", desc:"D1 $4–7M Y1; total v1+v2 $10–18M. D2 $4–7M Y1 + fund vehicle (~$200M committed + sponsor commit per market norm); total dominated by fund capital. D3 $5–10M Y1; total v1+v2 $15–25M plus partnership and standards-setting costs. D4 $5–8M Y1 + $50–100M originations + warehouse; total $60–120M plus operating spend, partly recoverable.", favors:[{d:"D1",lead:true,note:"Lowest absolute"},{d:"B0",lead:false,note:"$250–400K floor"}], weight:"Capital is concentrated in one pool with multiple competing claims, or sponsor-commitment capacity is constrained." },
+  { n:"05", name:"Risk profile", sub:"Severity × probability × mitigability", desc:"D1: execution and competitive risks; mostly mitigable. D2: highest concentration of catastrophic-severity risks (fund-capitalization is binary — no dedicated experiential-credit fund of meaningful size has closed in 2023–26, so a first thesis-specific raise is uncharted). D3: long-cycle risk profile — patience risk (catastrophic, moderate); 'give to get' portal adoption failure; horizontal data-player adjacency. D4: binary unknown on rail-overlap with credit-eligible operators.", favors:[{d:"D1",lead:true,note:"Lowest catastrophic concentration"}], weight:"Capital partners need clear risk-mitigation evidence, or the team's risk tolerance excludes binary catastrophic exposures." },
+  { n:"06", name:"Strategic optionality", sub:"What future moves does this preserve?", desc:"D2 has the highest optionality: running a credit book generates the proprietary data, capital franchise, and operator relationships that enable D3 (and D1, D4) as later-stage layered options. D2 creates future options. D3 standalone: moderate optionality conditional on 'give to get' portal adoption. D1: modest — enables future D3 if cross-customer data accumulates; partially forecloses D2 (conflict-of-interest). D4: modest — enables future D3; partially forecloses D2 since the team is already taking credit risk.", favors:[{d:"D2",lead:true,note:"Generates feedstock for D3"},{d:"D5b",lead:false,note:"Natural sequencing"}], weight:"The team's read on the category is uncertain enough that 'start narrow and expand' beats 'commit deeply now', or future capital deployment needs to preserve multiple paths." },
+  { n:"07", name:"Rail / existing-asset leverage", sub:"Does the team already own or have access to a ticketing-payments rail or an operator-relationship network?", desc:"D1: Low — vendor-neutral by design. The product integrates with operator data sources on the same terms as any other LOS. D2: High — a team with existing operator-network relationships (real-estate sponsor visibility, operator equity positions, ticketing-platform connectivity) compounds those into deal-flow advantages and privileged data inputs. D3: Very high at the data layer — those same assets are the early-stage data feedstock. D4: Maximal — the direction is structurally a feature of an operator-facing ticketing-and-payments rail. Without the rail, D4 is not the direction; with the rail, it is the strongest fit.", favors:[{d:"D4",lead:true,note:"Requires the rail"},{d:"D2",lead:false,note:"Deal-flow leverage"},{d:"D3",lead:false,note:"Data feedstock"}], weight:"The team has existing operating assets (an operator-facing transaction rail, sponsor relationships, equity positions) and the strategic premise depends on using them, rather than building from scratch as a standalone winner." },
+  { n:"08", name:"Exit pathway clarity + ceiling", sub:"Multiple, acquirer set, time-to-exit", desc:"D1: clear acquirer set (Moody's, S&P, Fitch, Verisk at 5–10× ARR if data-rich, 3–5× commodity; vertical-SaaS roll-ups at 2–4×). Modest multiples. Numerated / Moody's is the cautionary comp. D2: single comparable (Arctos at ~9.3–13% of AUM). Clear franchise-sale logic. D3: highest-multiple pathway. Trepp ~11.8×; CoStar / Matterport 9.4×; Reonomy ~10×; Placer.ai ~15×. Longest time-to-exit. D4: embedded in the integrated ticketing-and-payments platform exit pathway; not separately marketable.", favors:[{d:"D3",lead:true,note:"Highest multiple ceiling"},{d:"D2",lead:false,note:"Cleanest single comp"}], weight:"Defined exit horizon (5–7 years), or perpetuity-hold operating businesses are valued less than mid-term-exit operating businesses." }
+];
+const PROFILES = [
+  { letter:"A", name:"Fastest revenue at a reasonable ceiling", desc:"Cash flow inside 18 months. Modest-but-real outcome ceiling acceptable. Lowest capital intensity.", weights:"Criterion 2 (product clarity), Criterion 4 (capital), Criterion 1 (TAM/SAM)", winners:["D1"], ranking:[
+    { code:"D1", why:"Lowest capital ($4–7M Y1), shortest time-to-revenue (9–12 mo), execution risk concentrated in product-build complexity — not fund formation or operator overlap." },
+    { code:"D4", why:"Fast on the rail if operator-overlap turns out to be material. Bounded ceiling but tight rail-integration; modest revenue can ramp inside 18 months." },
+    { code:"D5a", why:"D1 + small in-house book gives near-term SaaS revenue plus optionality. Governance overhead is the tax." },
+    { code:"D2", why:"Fund-close timing (12–18+ months) is incompatible with the 18-month revenue bar. Wrong direction for Profile A." }
+  ]},
+  { letter:"B", name:"Largest 10-year terminal value", desc:"Build the highest-ceiling outcome over 10 years. Accept lower near-term revenue and higher capital intensity.", weights:"Criterion 1 (TAM), Criterion 3 (defensibility), Criterion 6 (optionality), Criterion 8 (exit clarity)", winners:["D5b","D3"], ranking:[
+    { code:"D5b", why:"D2 → D3 sequence captures D2's near-term revenue, builds toward D3's high-multiple ceiling, defers D3's hardest problem (operator data acquisition without lending) until 5 yrs of fund credibility." },
+    { code:"D3", why:"Conditional alternative if team has high conviction on the 'give to get' portal experiment succeeding. Standalone has cold-start risk." },
+    { code:"D2", why:"D2 alone is the foundation but caps below D5b's combined data-product ceiling." },
+    { code:"D1", why:"Caps at $500M and faces horizontal-wrapper compression. Wrong shape for 10-year terminal-value bet." }
+  ]},
+  { letter:"C", name:"Tightest existing-asset leverage", desc:"Build the thing only this team can build because of assets it already owns. Accept that the outcome ceiling is structurally bounded by the rail's scale.", weights:"Criterion 3 (defensibility), Criterion 7 (asset leverage — max weight)", winners:["D4","D2"], ranking:[
+    { code:"D4", why:"Structurally a feature of an owned ticketing-and-payments rail. Maximum operator-rail leverage. The rail's GMV and the eligible-merchant overlap are the binary gates that determine whether the premise holds." },
+    { code:"D2", why:"Compounds the team's existing operator-network relationships into fund deal flow. Privileged data inputs from any operator-facing rail. Less rail-bound than D4." },
+    { code:"D3", why:"Same asset base as D2 deployed at the data layer — but on a 10–15 yr timeline." },
+    { code:"D1", why:"Vendor-neutral by design. Lowest existing-asset leverage — wrong direction for this profile." }
+  ]},
+  { letter:"D", name:"Match the structural ambition", desc:"Build what the category-level framing actually describes: a scalable infrastructure layer for structured credit in experiential entertainment. System of record. Category-defining position.", weights:"Criterion 3 (defensibility), Criterion 6 (optionality), Criterion 7 (asset leverage), Criterion 8 (exit clarity)", winners:["D2","D5b"], ranking:[
+    { code:"D2", why:"The structural framing — 'scalable infrastructure layer for structured credit', 'system of record', 'the financial operating system for experiential' — most directly maps to the fund-infrastructure reading. D2 is the primary anchor for any team aiming at category-defining position." },
+    { code:"D5b", why:"D2 with the year-5+ data-product extension. The long-term vision (asset-level securitization, predictive attendance underwriting, portfolio-wide benchmarking) is D5b's language." },
+    { code:"D1", why:"The feature-list reading of the category maps to D1 (LOS), but the feature list is a subset — D1 alone descopes portfolio monitoring, which is part of the structural framing." },
+    { code:"D3", why:"An expansion of the structural framing rather than a reading of it. D3 imports an ambition (the 'Trepp / Placer / Cherre of experiential') the category-level framing does not name directly." }
+  ]}
+];
+const RISKS = [
+  { sev:"cat", prob:"high", name:"Fund-capitalization risk", dirs:["D2"], desc:"No dedicated experiential-credit fund of meaningful size has closed in 2023–2026. The first thesis-specific raise is uncharted. LP appetite has to be tested before the platform reaches operational meaning." },
+  { sev:"cat", prob:"mod", name:"Adverse selection in target tier", dirs:["D1","D2"], desc:"The $500K–$10M creative-led tier is partly underserved because partly uncreditworthy. v1 borrower selection determines whether the platform is a defensible specialty lender or a data-driven non-bank that gets bitten by adverse selection." },
+  { sev:"cat", prob:"low", name:"Rail-overlap unknown for D4", dirs:["D4"], desc:"For any team building D4, the overlap between the ticketing-and-payments rail's merchant base and credit-eligible experiential operators is the binary gate. If the credit-eligible overlap is too small, D4 is not viable at meaningful scale." },
+  { sev:"cat", prob:"low", name:"Related-party / conflict-of-interest", dirs:["D2","D4"], desc:"Most acute for D4 and D5a — the credit decision and the platform-commercial decision sit inside the same firm. Mitigable with rigorous information-barrier governance, decoupled commercial-and-credit decisions, and counsel-drafted credit-agreement carve-outs. Standard practice at any institution running both a third-party platform and a proprietary book." },
+  { sev:"cat", prob:"mod", name:"Time-to-defensible patience misalignment", dirs:["D3"], desc:"Build is 5–15+ years. Typical capital-partner return horizons are 5–7 years. Structural mismatch for D3 standalone unless paired with a near-term revenue line (D5b)." },
+  { sev:"cat", prob:"low", name:"Adverse-action / fair-lending exposure", dirs:["D1","D2"], desc:"CFPB Circular 2022-03 requires specific, actionable adverse-action reasons. SHAP instability on flexible models is the failure mode. The Bayesian + GBDT-residual architecture is the mitigation." },
+  { sev:"cat", prob:"low", name:"Synthesis-layer hallucination", dirs:["D1","D2","D3"], desc:"Even with citation-grade architecture, claim-evidence alignment is unsolved at the residual. ≥99% pointer-integrity + ≥95% claim-evidence alignment with a hard refusal path is the minimum production bar. Stanford RegLab 2024 found legal-AI hallucination at 17–33% rates without disciplined design." },
+  { sev:"ser", prob:"high", name:"Rail scale ceiling (D4 cap)", dirs:["D4"], desc:"D4 is bounded by the rail's GMV. Loss of a major anchor customer on the rail compresses the credit-product ceiling proportionally. Multi-rail diversification is a v3 question, not a v1 one." },
+  { sev:"ser", prob:"mod", name:"Generalist horizontal AI underwriting wrapper", dirs:["D1"], desc:"Casca, Built AI, Numerated/Moody's are horizontal today but can add an experiential wrapper in 24–36 months. Time-to-defensible-vertical is bounded by horizontal-wrap speed." },
+  { sev:"ser", prob:"high", name:"Product-build complexity", dirs:["D1","D2","D3","D4"], desc:"v1 maturity requires building the Bayesian methodology spine, the projection validation filter, the citation-grounded synthesis layer, the data integration architecture, and the operator portal simultaneously. Multi-quarter effort under the best conditions." },
+  { sev:"ser", prob:"mod", name:"Bayesian methodology miscalibration", dirs:["D1","D2"], desc:"Bayesian hierarchical models are not guaranteed to be well-calibrated out-of-sample at small N (50–100 operator-months). The calibration loop, the conformal wrapper, and the refusal-aware decision layer are the mitigations. Pilot deployment is the empirical test." },
+  { sev:"ser", prob:"mod", name:"Macro / consumer-discretionary correction", dirs:["D1","D2","D4"], desc:"Experiential is consumer-discretionary. Same-venue declines, multi-venue distress, and category bankruptcies have all happened pre-shock in this cycle. A 2026–28 correction compresses originations and stresses any existing book simultaneously." },
+  { sev:"ser", prob:"mod", name:"'Give-to-get' portal adoption failure", dirs:["D3"], desc:"D3 architecture depends on operators voluntarily sharing data they have historically protected. If the portal's value-to-operator proposition isn't compelling, the data layer never forms." },
+  { sev:"mod", prob:"high", name:"Thin buyer set for D1 exit", dirs:["D1"], desc:"No obvious strategic acquirer today. Constellation / Roper / Thoma Bravo roll-ups at 2–4× revenue are the realistic floor. Numerated → Moody's at undisclosed-but-modest terms is the cautionary precedent." },
+  { sev:"mod", prob:"mod", name:"Operator switching mid-loan", dirs:["D4"], desc:"Embedded-credit holdback depends on the operator staying on the rail. A mid-loan switch creates collection risk. Credit-agreement carve-outs are critical." },
+  { sev:"mod", prob:"mod", name:"Sub-vertical concentration", dirs:["D2","D4"], desc:"First 5–10 deals clustering in one sub-vertical carries format-risk exposure. Explicit concentration limits (no sub-vertical >25%, no single operator >5%) are the mitigation." },
+  { sev:"mod", prob:"low", name:"Backstop capital source for D4", dirs:["D4"], desc:"Where does the $50–100M originations capital come from? Warehouse facility from a Sixth Street / Apollo / Blue Owl class lender is the structural answer; balance-sheet alternatives exist but tie up capital that could go elsewhere. Gating decision before commitment." }
+];
+const VERIFY_QS = [
+  { id:"Q1", title:"For any team building D4 — what's the credit-eligible-operator overlap on the rail?", gates:["D4","D2","D3","D1"], why:"Binary gate for D4. If the ticketing-and-payments rail's merchant base does not overlap meaningfully with credit-eligible experiential operators (typical embedded-credit eligibility: 6+ months processed volume, $50K+ annualized, low chargeback rate, predictable seasonality), D4 is not viable at scale. Also informs D1 (referral channel), D2 (initial deal-flow funnel), and D3 (early data feedstock).", how:"Analyze the rail's merchant base by event-type / sub-vertical / annualized GMV / time-on-platform. Score against an embedded-credit eligibility template (Stripe Capital analog). Cross-reference payments-processing data on chargeback rates and seasonality.", learns:"The base rate of credit-eligible experiential operators in the rail's universe. Sub-vertical mix. Time-on-platform distribution. Foundational input to any direction that uses the rail." },
+  { id:"Q2", title:"What IRR profile does a disciplined experiential-credit book actually produce?", gates:["D2","D5a","D5b"], why:"Determines D2 viability. A first-time fund targeting 12–15% gross IRR with an 8% hurdle generates the management-fee annuity plus carry that drives the franchise-sale multiple. Adverse selection producing 5–8% net IRR means management fees but no carry — and the franchise-sale ratio compresses materially below the Arctos comp.", how:"Pilot underwriting exercise: 5–10 experiential deals underwritten using the methodology spine (Bayesian + conformal + projection validation), tracked over 18–24 months for realized vs. expected loss rates and IRR.", learns:"Whether the methodology spine outperforms naive baselines at realistic v1 data scale. Foundational calibration evidence for any direction holding credit risk." },
+  { id:"Q3", title:"Will target operators share permissioned data through a 'give to get' portal?", gates:["D3","D2","D5b"], why:"Gates D3 standalone — the whole architecture depends on voluntary data-sharing. Informs D2 (borrower-permissioned data-sharing under a credit agreement still needs operator buy-in to be usable) and D5b (D3 emerges from accumulated data — same dependency at the harvest point).", how:"'Give to get' portal prototype experiment with 15–25 operators across target sub-verticals. Prototype features: benchmarking, forecasting, peer comparison, sub-vertical attendance percentiles. Interview protocol probes willingness to share data in exchange for these features without a lending relationship.", learns:"The operator-side incentive that produces voluntary data-sharing in this category. Product knowledge that informs portal UX for any direction." },
+  { id:"Q4", title:"What is qualified lender / capital-allocator demand for a vertical experiential-credit product?", gates:["D1","D2"], why:"Gates D1 viability (customer is the third-party lender credit officer). Informs D2 indirectly (LP appetite for an experiential-credit sleeve uses a related demand signal).", how:"Direct-sales discovery: 30–50 prospect community banks, specialty lenders, family offices, C-PACE specialists. First-meeting outreach to 10–15. Goal is 1–3 design-partner conversations with paid-pilot intent at $50–150K ACV.", learns:"Credit-officer-side pain points and willingness-to-pay distribution for a vertical experiential workflow product. Direct signal for D1; referral signal for D2." },
+  { id:"Q5", title:"What origination volume can the available ticketing-payments rail support?", gates:["D4","D5a"], why:"Caps D4 (structurally bounded by the rail's GMV). Informs D5a (captive book within the D1+D2 hybrid uses the rail as data-and-deal-flow input).", how:"Business-plan review for the rail under consideration: current GMV; 24–36-month trajectory under base / bull / bear scenarios; anchor-customer contract steady-state contribution; new-anchor pipeline. Combined with Q1's eligibility analysis yields the achievable origination volume.", learns:"The rail's realistic growth trajectory. Foundational input to any rail-leveraged direction." },
+  { id:"Q6", title:"What's the realistic IRR on D2 with adverse selection vs. without?", gates:["D2","D5a","D5b"], why:"D2's franchise-sale multiple (Arctos ~9–13% of AUM) is conditional on a credible IRR profile. Adverse selection in v1 borrower selection could compress realized IRR materially below targets and drag the franchise ratio with it.", how:"Two-part: (a) the Q2 pilot produces realized loss-rate evidence on a small portfolio; (b) reference-class forecasting against documented experiential format-failure patterns produces an expected-loss anchor. The gap between target IRR and adverse-selection-adjusted IRR is the residual risk.", learns:"Realistic expected-loss range for the target tier. Foundational to D2 / D4 / D5a / D5b sizing and any direction's risk-pricing." }
+];
+const COMPS = [
+  { name:"Arctos → KKR", for:"D2", deal:"Feb 2026 · $1.4B initial + $550M earnout (2031–33 vest)", insight:"~$15B AUM at sale = ~9.3% initial / ~13% if earnout vests. Single data point — not a market benchmark. Premium for sector positioning + LP relationships + multi-league sanctioned access. Reference for D2's franchise exit.", multi:"Multiple · ~9–13% of AUM" },
+  { name:"Trepp → Fitch", for:"D3", deal:"April 2026 · ~$1B cash · close Q2 2026", insight:"Asymmetrix estimates ~$85M revenue → implied ~11.8× revenue. Multiple is secondary-derived. Built over 47 years of accumulated CMBS data + rating-agency workflow integration + standards-setting position. The headline D3 comp.", multi:"Multiple · ~11.8× revenue (est.)" },
+  { name:"CoStar → Matterport", for:"D3", deal:"Feb 2025 · $1.6B EV / 9.4× revenue", insight:"$169.7M FY24 revenue. 50B sq ft under management in 3D digital twins. CoStar at $3.2B FY25 revenue trades at ~5× sales itself. Buyer paid up for data-asset depth.", multi:"Multiple · 9.4× revenue" },
+  { name:"Placer.ai", for:"D3", deal:"Aug 2024 · $1.5B post-money · $100M+ ARR", insight:"~15× revenue at $100M ARR. 9 years from founding to $100M ARR; 12+ year total build. Foot-traffic and location intelligence — adjacent to MarketScope crossover (Initiative #3) but not directly Red Sky.", multi:"Multiple · ~15× revenue" },
+  { name:"Cherre Series C", for:"D3", deal:"Sept 2024 · $30M Series C", insight:"CRE knowledge graph + data integration. Estimated $250–500M valuation. Strategic LPs Nuveen / RXR / TA Realty. Founded 2014; 11 years to Series C scale. The 'Cherre-meets-Arctos' framing names D5b.", multi:"Status · mid-stage data co" },
+  { name:"Reonomy → Altus", for:"D3", deal:"Nov 2021 · $201.5M + $3.7M earnout", insight:"~$21M ARR at exit = ~10× ARR. Bottom of the data-product multiple range. Useful floor for D3 data-product exit math. 50M+ commercial property records.", multi:"Multiple · ~10× ARR" },
+  { name:"Casca", for:"D1", deal:"Aug 2025 · $29M Series A", insight:"Led by Canapi Ventures. Customers: Live Oak, Huntington, Bankwell as customer-investors. YC alum, ~$33M cumulative. Closest D1 direct horizontal analog — and the competitive threat if Series B brings vertical-experiential intent in 2027.", multi:"Status · category-funded horizontal LOS" },
+  { name:"Numerated → Moody's", for:"D1", deal:"Nov 2024 · undisclosed (reportedly modest)", insight:"$65B+ lending processed across 500K+ small businesses pre-acquisition. ~$32M lifetime raised. Cautionary comp: vertical-credit-LOS software doesn't price like proprietary data — strategic add to Moody's data franchise, not multibillion SaaS exit.", multi:"Multiple · undisclosed but compressed" },
+  { name:"nCino", for:"D1", deal:"Public · FY25 rev $540.7M · mcap ~$1.75B", insight:"Vertical-credit LOS at scale trades at ~3× trailing revenue mid-2026. Multiple compression reflects broader vertical-SaaS reset. nCino's own strategic-acquisition appetite is constrained by its compression.", multi:"Multiple · ~3× trailing revenue" },
+  { name:"Tipalti Series G", for:"D1", deal:"Sept 2025 · $200M · ~$2B post-money", insight:"~10× revenue at $2B valuation. AP automation / payments-ops vertical. Tipalti's category leadership demonstrates 10× multiple available for vertical-finance-ops winners.", multi:"Multiple · ~10× revenue" },
+  { name:"Toast Capital", for:"D4", deal:"Embedded in Toast (public)", insight:">$1B 2024 originations. Toast FY25 revenue $6.15B, ~$2B ARR. Market cap implies ~2.6× revenue mid-2026. Toast Capital not separately marketable — embedded-finance exits as platform feature. Structural reference for D4.", multi:"Multiple · 2.6× revenue (platform)" },
+  { name:"Shopify Capital", for:"D4", deal:"Embedded in Shopify (public)", insight:"$4.2B 2025 originations ($3.0B 2024). $1.6B EOY gross loans receivable. Architecturally the same as Toast Capital — financing against processed GMV with automatic daily recoupment.", multi:"Structure · feature, not standalone" },
+  { name:"Stripe Capital", for:"D4", deal:"Embedded in Stripe (private)", insight:"81,000 advances/loans 2025. Pricing: fixed % of daily processed volume (typically 9–15% withholding rate). Stripe's structural advantage: in the flow of funds, zero data-sharing friction for the merchant.", multi:"Structure · feature in private platform" },
+  { name:"Block / Square Loans", for:"D4", deal:">$200B cumulative through Jan 2026", insight:"Stable sub-3% loss rates across cycles (2013–2025 including COVID, 2022 inflation, 2023 banking stress). Strongest public evidence that continuous-data-based underwriting outperforms traditional through cycles.", multi:"Reference · loss-rate stability proof" },
+  { name:"Cvent → Blackstone", for:"D4", deal:"Jun 2023 · $4.6B", insight:"Defines venue/event-tech platform multiples at scale. Cvent's December 2025 acquisition of ON24 for $400M continued the platform roll-up. The integrated-platform exit pathway D4 collapses into.", multi:"Multiple · platform-scale benchmark" },
+  { name:"Bending Spoons → Eventbrite", for:"D4", deal:"Dec 2025 · $500M / ~1.7× revenue", insight:"Eventbrite stalled SMB marketplace. 1.7× multiple defines the compression floor for a stalled marketplace asset. Cautionary for any direction that stalls at PMF stage.", multi:"Multiple · 1.7× revenue (floor)" },
+  { name:"Pagaya (PGY)", for:"D3", deal:"Public · FY25 rev $1.3B (+26%)", insight:"29.3% adj EBITDA margin. $3.6T cumulative loan applications. But market cap $1.2B = <1× sales mid-2026. Credit categories trade sub-1× sales when cycle turns. Cautionary counter to D3's 8–15× upside band.", multi:"Multiple · <1× sales (compression)" },
+  { name:"Ares SMEO Fund II", for:"D2", deal:"2024 · $1B first close on $2B target", insight:"Sports-tilted (~⅔ sports). M&E sleeve overlaps experiential. New Mexico SIC committed $150M. Useful as graduation-lender for Red Sky-originated operators scaling past $25M. Predecessor SMEO I closed $2.2B (2022) / $3.7B leveraged.", multi:"Reference · graduation-tier counterparty" }
+];
+
+/* RENDER */
+const state = { activeDir:null };
+function el(html){ const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstElementChild; }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[c]); }
+
+function renderMatrix(){
+  const head=document.getElementById("matrix-head");
+  const body=document.getElementById("matrix-body");
+  head.innerHTML=`<th class="dim-col">Dimension</th>`+DIRECTIONS.map(d=>`<th class="dir-col" data-col="${d.code}" style="--tone:${d.tone}">${d.code}<br/><span style="font-family:var(--serif); font-size:14px; text-transform:none; letter-spacing:0; color:var(--text); font-weight:400;">${escapeHtml(d.name)}</span></th>`).join("");
+  body.innerHTML="";
+  MATRIX_DIMS.forEach(dim=>{
+    const row=document.createElement("tr");
+    row.innerHTML=`<th scope="row">${escapeHtml(dim.label)}</th>`+DIRECTIONS.map(d=>{
+      const cls=`dir-${d.code.toLowerCase()}`;
+      if(dim.isRange){
+        const toPct=v=>{ const min=Math.log10(1),max=Math.log10(3000); return Math.max(0,Math.min(100,((Math.log10(v)-min)/(max-min))*100)); };
+        const loPct=toPct(d.ceilingLo).toFixed(1),hiPct=toPct(d.ceilingHi).toFixed(1),medPct=toPct(d.ceilingMed).toFixed(1);
+        return `<td class="${cls}" data-col="${d.code}" style="--tone:${d.tone}"><div class="bar-cell"><div style="font-family:var(--mono); font-size:11.5px; color:var(--paper); font-weight:600;">${escapeHtml(d.ceiling)}</div><div class="track"><div class="fill" style="left:${loPct}%; right:${(100-hiPct).toFixed(1)}%; background:${d.tone};"></div><div class="median" style="left:${medPct}%"></div></div></div></td>`;
+      }
+      return `<td class="${cls}" data-col="${d.code}" style="--tone:${d.tone}">${escapeHtml(d[dim.key])}</td>`;
+    }).join("");
+    body.appendChild(row);
+  });
+  head.querySelectorAll(".dir-col").forEach(th=>{
+    th.addEventListener("click",()=>{ const code=th.dataset.col; setActiveDir(code===state.activeDir?null:code); });
+  });
+}
+
+function formatRange(v){ if(v>=1000) return `$${(v/1000).toFixed(1).replace(/\.0$/,'')}B`; return `$${v}M`; }
+function renderOutcome(){
+  const root=document.getElementById("outcome-rows");
+  root.innerHTML="";
+  const toPct=v=>{ const min=Math.log10(1),max=Math.log10(3000); return Math.max(0,Math.min(100,((Math.log10(v)-min)/(max-min))*100)); };
+  DIRECTIONS.forEach(d=>{
+    const lo=toPct(d.ceilingLo),hi=toPct(d.ceilingHi),md=toPct(d.ceilingMed);
+    const row=el(`<div class="row" data-code="${d.code}" style="--lo:${lo}%; --hi:${hi}%; --md:${md}%;"><div class="label"><span class="dot"></span><span><span class="code">${d.code}</span> · ${escapeHtml(d.name)}</span></div><div class="range"><div class="bar"></div><div class="lo-label">${formatRange(d.ceilingLo)}</div><div class="hi-label">${formatRange(d.ceilingHi)}</div><div class="median" title="median ${formatRange(d.ceilingMed)}"></div></div><div class="time">${escapeHtml(d.time)}</div></div>`);
+    root.appendChild(row);
+  });
+}
+
+function renderCriteria(){
+  const root=document.getElementById("criteria-list");
+  root.innerHTML="";
+  CRITERIA.forEach(c=>{
+    const favs=c.favors.map(f=>{
+      const d=DIRECTIONS.find(x=>x.code===f.d);
+      const tone=d?d.tone:"var(--muted)";
+      const cls=f.lead?"fav lead":"fav";
+      return `<span class="${cls}" style="--tone:${tone}; color:${f.lead?tone:'var(--text-2)'}; border-color:${f.lead?tone:'var(--rule)'}; background:${f.lead?'rgba(255,255,255,0.04)':'transparent'};"><span class="dot" style="background:${tone}"></span>${f.d}</span>`;
+    }).join("");
+    const item=el(`<div class="crit" data-n="${c.n}"><button class="crit-head" type="button" aria-expanded="false"><span class="n">${c.n}</span><span class="name">${escapeHtml(c.name)}<span class="sub">${escapeHtml(c.sub)}</span></span><span class="favors">${favs}</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9l6 6 6-6"/></svg></button><div class="crit-body"><p>${c.desc}</p><div class="weight"><strong>Weight this higher if</strong>${escapeHtml(c.weight)}</div></div></div>`);
+    item.querySelector(".crit-head").addEventListener("click",()=>{ item.classList.toggle("open"); item.querySelector(".crit-head").setAttribute("aria-expanded", item.classList.contains("open")); });
+    root.appendChild(item);
+  });
+}
+
+function renderProfiles(){
+  const root=document.getElementById("profiles");
+  root.innerHTML="";
+  PROFILES.forEach(p=>{
+    const winners=p.winners.map(w=>`<span>${w}</span>`).join("");
+    const btn=el(`<button class="profile" type="button" data-p="${p.letter}" aria-pressed="false"><div class="letter">Profile ${p.letter}</div><h4>${escapeHtml(p.name)}</h4><p>${escapeHtml(p.desc)}</p><div class="winners">Favors → ${winners}</div></button>`);
+    btn.addEventListener("click",()=>setActiveProfile(p.letter));
+    root.appendChild(btn);
+  });
+}
+function setActiveProfile(letter){
+  document.querySelectorAll(".profile").forEach(p=>{ const on=p.dataset.p===letter; p.classList.toggle("active",on); p.setAttribute("aria-pressed",on?"true":"false"); });
+  const out=document.getElementById("sim-output");
+  const profile=PROFILES.find(p=>p.letter===letter);
+  if(!profile){ out.innerHTML=`<div class="placeholder">Pick a profile on the left.</div>`; return; }
+  const rows=profile.ranking.map((r,i)=>{
+    const lead=i===0?" lead":"";
+    const d=DIRECTIONS.find(x=>x.code===r.code);
+    return `<div class="rank-row${lead}" data-code="${r.code}"><div class="rk">${i===0?"★":"#"+(i+1)}</div><div class="code">${r.code}</div><div class="why">${escapeHtml(r.why)}</div><div class="score">${escapeHtml(d?d.ceiling:"")}</div></div>`;
+  }).join("");
+  out.innerHTML=`<h4>Profile ${profile.letter} · <span class="serif" style="font-style:italic; font-weight:400; color:var(--text-2)">${escapeHtml(profile.name)}</span></h4><p style="color:var(--text-2); font-size:13.5px; line-height:1.55; max-width:60ch;">${escapeHtml(profile.desc)}</p><p style="color:var(--muted); font-size:12px; line-height:1.5; max-width:60ch; margin-top:8px; font-family:var(--mono);">Weights → ${escapeHtml(profile.weights)}</p><div class="ranking">${rows}</div>`;
+}
+
+function renderRisks(){
+  const cellMap={"cat-low":[],"cat-mod":[],"cat-high":[],"ser-low":[],"ser-mod":[],"ser-high":[],"mod-low":[],"mod-mod":[],"mod-high":[]};
+  RISKS.forEach(r=>{ const key=`${r.sev}-${r.prob}`; if(cellMap[key]) cellMap[key].push(r); });
+  Object.entries(cellMap).forEach(([key,list])=>{
+    const cell=document.querySelector(`.cell[data-cell="${key}"]`);
+    if(!cell) return;
+    cell.innerHTML=list.map(r=>{
+      const tags=r.dirs.map(d=>`<span class="tag" data-d="${d}">${d}</span>`).join("");
+      const sevLabel=r.sev==="cat"?"Catastrophic":r.sev==="ser"?"Serious":"Moderate";
+      return `<div class="risk-card" data-sev="${r.sev}" data-dirs="${r.dirs.join(',')}"><div class="sev-label">${sevLabel}</div><div class="name">${escapeHtml(r.name)}</div><div class="tags">${tags}</div><div class="desc">${escapeHtml(r.desc)}</div></div>`;
+    }).join("");
+  });
+}
+
+function renderVerify(){
+  const root=document.getElementById("verify-list");
+  root.innerHTML="";
+  VERIFY_QS.forEach(q=>{
+    const gates=q.gates.map(g=>`<span data-d="${g}">${g}</span>`).join("");
+    root.appendChild(el(`<div class="qbox"><div class="qhead"><div class="qid">${q.id}</div><div><h4>${escapeHtml(q.title)}</h4><div class="gates">Gates → ${gates}</div></div></div><div class="qbody"><p><span class="lbl">Why</span>${escapeHtml(q.why)}</p><p><span class="lbl">How</span>${escapeHtml(q.how)}</p><p><span class="lbl">What you learn</span>${escapeHtml(q.learns)}</p></div></div>`));
+  });
+}
+
+function renderComps(){
+  const root=document.getElementById("comps");
+  root.innerHTML="";
+  COMPS.forEach(c=>{
+    root.appendChild(el(`<div class="comp" data-for="${c.for}"><div class="header"><div class="name">${escapeHtml(c.name)}</div><div class="for" data-for="${c.for}">→ ${c.for}</div></div><div class="deal">${escapeHtml(c.deal)}</div><div class="insight">${escapeHtml(c.insight)}</div><div class="multi">${escapeHtml(c.multi)}</div></div>`));
+  });
+  document.querySelectorAll("#comp-filters button").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const f=btn.dataset.filter;
+      document.querySelectorAll("#comp-filters button").forEach(b=>b.classList.toggle("active",b===btn));
+      document.querySelectorAll(".comp").forEach(c=>c.classList.toggle("dimmed",f!=="all"&&c.dataset.for!==f));
+    });
+  });
+}
+
+function setActiveDir(code){
+  state.activeDir=code;
+  const bar=document.getElementById("activebar");
+  const badge=document.getElementById("active-badge");
+  if(code){ const d=DIRECTIONS.find(x=>x.code===code); badge.textContent=`${code} · ${d.name}`; badge.style.color=d.tone; bar.classList.remove("empty"); }
+  else { bar.classList.add("empty"); }
+  document.querySelectorAll(".matrix [data-col]").forEach(c=>{ c.classList.toggle("active-col",code&&c.dataset.col===code); c.classList.toggle("dimmed",code&&c.dataset.col!==code); });
+  const oc=document.getElementById("outcome");
+  if(code) oc.setAttribute("data-active",code); else oc.removeAttribute("data-active");
+  document.querySelectorAll(".outcome .row").forEach(r=>r.classList.toggle("active",code&&r.dataset.code===code));
+  document.querySelectorAll(".risk-card").forEach(r=>{ const dirs=(r.dataset.dirs||"").split(","); r.classList.toggle("dimmed",code&&!dirs.includes(code)); });
+  document.querySelectorAll(".comp").forEach(c=>c.classList.toggle("dimmed",code&&c.dataset.for!==code));
+  document.querySelectorAll(".dir-deep").forEach(d=>d.style.opacity=(code&&d.dataset.code!==code)?"0.4":"1");
+}
+document.getElementById("clear-dir").addEventListener("click",()=>setActiveDir(null));
+
+function initScroll(){
+  const subnav=document.getElementById("subnav");
+  const hero=document.querySelector(".hero");
+  const links=subnav.querySelectorAll("a");
+  const sections=Array.from(document.querySelectorAll("section[id]"));
+  window.addEventListener("scroll",()=>{
+    const past=window.scrollY>(hero.offsetHeight-60);
+    subnav.classList.toggle("visible",past);
+  });
+  if("IntersectionObserver" in window){
+    const obs=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ const id=e.target.id; links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")===`#${id}`)); } });
+    },{rootMargin:"-40% 0px -55% 0px",threshold:0});
+    sections.forEach(s=>obs.observe(s));
+  }
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  renderMatrix();
+  renderOutcome();
+  renderCriteria();
+  renderProfiles();
+  renderRisks();
+  renderVerify();
+  renderComps();
+  initScroll();
+});
+</script>
+
+</body>
+</html>
