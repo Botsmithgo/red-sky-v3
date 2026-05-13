@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
 /* ──────────────────────────────────────────────────────────────────────────
-   RED SKY v2 · 2026-05-13 · Product · Market · Financials
+   RED SKY v3 · 2026-05-13 · Market thesis · Fresh-reader edition
    ────────────────────────────────────────────────────────────────────────── */
 :root {
   --ink: #0B0D10; --ink-2: #0F1318; --panel: #14181D; --panel-2: #1A1F26;
@@ -899,7 +899,7 @@ footer .disclaimer { margin-top: 48px; padding-top: 28px; border-top: 1px solid 
         <div class="num">Capability 04</div>
         <h4>Operator data integration architecture</h4>
         <p>Ingest across at least eight upstream types: bank, accounting (GL/AR/AP), ticketing, POS, payments, CRM, payroll, documents. Lakehouse-anchored (Snowflake / Databricks) with medallion bronze/silver/gold pattern; graph + vector are v2/v3.</p>
-        <p>Buy commodity (<strong>Codat ~$30–80K/yr</strong> covers ~80% of accounting; Plaid / MX <strong>~$25–60K/yr</strong> for banking; Pinwheel for payroll; Senzing for entity resolution; Ocrolus / Sensible for bank-statement extraction). <strong>The data-aggregation gap is in ticketing.</strong> No horizontal aggregator exists — each platform is a direct integration. The most underestimated line item in the brief. The Red Sky internal "Experiential Entertainment Uniform System of Accounts" is a load-bearing artifact in v1 — the seed of a future Direction 3 standards-setting role.</p>
+        <p>Buy commodity (<strong>Codat ~$30–80K/yr</strong> covers ~80% of accounting; Plaid / MX <strong>~$25–60K/yr</strong> for banking; Pinwheel for payroll; Senzing for entity resolution; Ocrolus / Sensible for bank-statement extraction). <strong>The data-aggregation gap is in ticketing.</strong> No horizontal aggregator exists — each platform is a direct integration. The most underestimated piece of the build. The internal "Experiential Entertainment Uniform System of Accounts" — a category chart-of-accounts that does not exist off-the-shelf — is a load-bearing artifact in v1 and the seed of a future Direction 3 standards-setting role.</p>
         <div class="depth">
           <span class="d"><strong>D1</strong> Moderate · vendor-neutral</span><span class="d"><strong>D2</strong> Full · rail-privileged</span><span class="d"><strong>D3</strong> Maximal</span><span class="d"><strong>D4</strong> Maximal · rail-bounded</span>
         </div>
@@ -974,7 +974,7 @@ footer .disclaimer { margin-top: 48px; padding-top: 28px; border-top: 1px solid 
             <h5>What's the structural opening</h5>
             <p>Casca closed $29M Series A Aug 2025 with Live Oak / Huntington / Bankwell as customer-investors — the playbook works. <strong>But Casca is horizontal across SBA / commercial.</strong> No vertical-experiential wrapper exists today. Time-to-defensible-vertical is bounded by how fast a horizontal player can wrap the category (24–36 months).</p>
             <h5>Scope honesty</h5>
-            <p>D1 deliberately descopes portfolio monitoring, which is a Phase 1 capability in the brief. D1 is a defensible product choice but it is <em>not</em> a complete instantiation of the brief — it is a subset focused on LOS-without-monitoring. If portfolio monitoring is non-negotiable, D1 alone does not satisfy the brief; consider D5a or shift to D2.</p>
+            <p>D1 deliberately descopes portfolio monitoring, which sits in the structural framing as a Phase 1 capability. D1 is a defensible product choice but it is <em>not</em> a complete instantiation of the category-level ambition — it is a subset focused on LOS-without-monitoring. If portfolio monitoring is non-negotiable for the team's strategic position, D1 alone is incomplete; consider D5a or shift to D2.</p>
             <h5>The buyer set at exit</h5>
             <p>Ratings / data strategics pay for data depth (Moody's, S&amp;P, Fitch, Verisk — Numerated → Moody's Nov 2024 at undisclosed, reportedly modest). Vertical-SaaS roll-ups pay 2–4× revenue (Constellation, Roper, Thoma Bravo, Vista). Banking-software platforms pay mid-range with integration risk (nCino public at ~3× trailing revenue mid-2026). <strong>A D1 without proprietary data is the wrong shape for the highest-multiple ratings-strategic exit</strong> — it caps at the vertical-SaaS-roll-up floor.</p>
           </div>
@@ -1356,14 +1356,14 @@ footer .disclaimer { margin-top: 48px; padding-top: 28px; border-top: 1px solid 
       <div>
         <h2><small>§6 · Decision framework</small>Eight criteria. Four profiles. One choice.</h2>
       </div>
-      <p class="blurb">The four directions are non-dominated — each is the highest-scoring under at least one plausible weighting profile. The team's choice depends on what it is optimizing for. The eight criteria below are the load-bearing axes of the choice. Click any criterion to expand. <strong>The framework deliberately excludes organizational, hiring, and political dimensions per the v2 scope.</strong></p>
+      <p class="blurb">The four directions are non-dominated — each is the highest-scoring under at least one plausible weighting profile. The team's choice depends on what it is optimizing for. The eight criteria below are the load-bearing axes of the choice. Click any criterion to expand. <strong>The framework deliberately limits itself to market, product, and financial dimensions</strong> — organizational, hiring, and political dimensions sit alongside this framework, not inside it.</p>
     </div>
 
     <div class="criteria" id="criteria-list"></div>
 
     <div class="callout green" style="margin-top: 40px;">
       <h5>What the framework does not resolve</h5>
-      <p>The framework is a tool for the team to apply its own weighting, not a scorecard that produces an answer. It does not tell the team which strategic-goal profile (A, B, C, D) is right for its situation. It does not resolve the brief's two-halves tension (feature list maps to D1; structural framing maps to D2). It does not substitute for the market evidence the team needs to gather (§7).</p>
+      <p>The framework is a tool for the team to apply its own weighting, not a scorecard that produces an answer. It does not tell the team which strategic-goal profile (A, B, C, D) is right for its situation. It does not resolve the category's two-halves tension (the feature-list reading maps to D1; the structural-framing reading maps to D2). It does not substitute for the market evidence the team needs to gather (§7).</p>
       <p><strong>What the framework does provide:</strong> the criteria are exhaustive of the product-and-financial axes the team should weight. If the team finds itself wanting to weight a criterion not listed here, that criterion is either organizational/political (out of scope for v2) or it's a sub-criterion of an existing one.</p>
     </div>
   </div>
